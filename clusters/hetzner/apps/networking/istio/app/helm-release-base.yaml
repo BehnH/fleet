@@ -11,5 +11,4 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio-charts
-        namespace: istio-system
       interval: 1m
