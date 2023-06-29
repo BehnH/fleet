@@ -7,7 +7,6 @@ spec:
   summary: New Flux Alert
   providerRef:
     name: discord
-    namespace: flux-system
   eventSeverity: info
   eventSources:
     - kind: GitRepository
