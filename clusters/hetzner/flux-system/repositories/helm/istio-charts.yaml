@@ -4,6 +4,6 @@ metadata:
   name: istio-charts
   namespace: flux-system
 spec:
-  interval: 15m
+  interval: 30m
   url: https://istio-release.storage.googleapis.com/charts
-  timeout: 3m
+  timeout: 10m

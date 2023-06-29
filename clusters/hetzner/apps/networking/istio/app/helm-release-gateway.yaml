@@ -4,16 +4,16 @@ metadata:
   name: istio-ingress
   namespace: istio-system
 spec:
-  interval: 5m
+  interval: 6h
+  timeout: 30m
   dependsOn:
-    - name: istio-base
-      namespace: istio-system
-    - name: istiod
+    - name: istio-istiod
       namespace: istio-system
   chart:
     spec:
       chart: gateway
+      version: 1.18.0
       sourceRef:
         kind: HelmRepository
         name: istio-charts
-      interval: 1m
+        namespace: flux-system
