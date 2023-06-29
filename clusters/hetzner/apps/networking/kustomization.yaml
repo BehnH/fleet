@@ -4,4 +4,4 @@ resources:
   - namespace.yaml
   - istio/kustomization.yaml
   - istio/namespace.yaml
-  - health/kustomization.yaml
+  - ./health
