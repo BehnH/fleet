@@ -4,3 +4,4 @@ resources:
   - metallb-charts.yaml
   - istio-charts.yaml
   - hetzner-charts.yaml
+  - jetstack-charts.yaml
