@@ -1,6 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  - 1password-charts.yaml
   - metallb-charts.yaml
   - istio-charts.yaml
   - hetzner-charts.yaml
