@@ -8,4 +8,4 @@ spec:
   channel: hetzner-k8s
   secretRef:
     name: discord-webhook
-  name: FluxBot
+  username: FluxBot
