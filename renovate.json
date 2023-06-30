@@ -1,6 +1,52 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
+  "enabled": true,
+  "flux": {
+    "fileMatch": [
+        "\\.ya?ml$"
+    ]
+  },
+  "helm-values": {
+    "commitMessageTopic": "helm values {{depName}}",
+    "fileMatch": [
+        "\\.ya?ml$"
+    ],
+    "pinDigests": false
+  },
+  "helmv3": {
+    "registryAliases": {
+        "stable": "https://charts.helm.sh/stable"
+    },
+    "commitMessageTopic": "helm chart {{depName}}",
+    "fileMatch": [
+        "\\.ya?ml$"
+    ]
+  },
+  "kubernetes": {
+    "fileMatch": [
+        "\\.ya?ml$"
+    ]
+  },
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+        "matchDatasources": [
+          "helm"
+        ],
+        "semanticCommitScope": "charts",
+        "separateMinorPatch": true,
+        "ignoreDeprecated": true
+      },
+      {
+        "matchDatasources": [
+          "docker"
+        ],
+        "enabled": true,
+        "matchUpdateTypes": [
+          "major",
+          "minor",
+          "patch"
+        ]
+      }
   ]
 }
