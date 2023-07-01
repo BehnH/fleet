@@ -26,3 +26,9 @@ spec:
     timeout: 10m
     recreate: true
     cleanupOnFail: true
+  values:
+    operator:
+      create: true
+      token:
+        name: "op-token"
+        value: "token"
