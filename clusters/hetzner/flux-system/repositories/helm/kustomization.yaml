@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - 1password-charts.yaml
-  - dragonflydb-charts.yaml
+  - bitnami-charts.yaml
   - hetzner-charts.yaml
   - istio-charts.yaml
   - jetstack-charts.yaml
