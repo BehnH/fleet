@@ -30,5 +30,4 @@ spec:
     operator:
       create: true
       token:
-        name: "op-token"
-        key: "token"
+        name: op-token
