@@ -31,4 +31,4 @@ spec:
       create: true
       token:
         name: "op-token"
-        value: "token"
+        key: "token"
