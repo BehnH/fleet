@@ -1,0 +1,9 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: dragonflydb-charts
+  namespace: flux-system
+spec:
+  interval: 30m
+  url: oci://ghcr.io/dragonflydb/dragonfly/helm/dragonfly
+  timeout: 10m
