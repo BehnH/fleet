@@ -27,7 +27,10 @@ spec:
     recreate: true
     cleanupOnFail: true
   values:
+    connect:
+      serviceType: ClusterIP
     operator:
+      autoRestart: true
       create: true
       token:
         name: op-token
