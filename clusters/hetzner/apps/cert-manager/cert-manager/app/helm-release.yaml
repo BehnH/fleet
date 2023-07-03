@@ -15,7 +15,7 @@ spec:
         kind: HelmRepository
         name: jetstack-charts
         namespace: flux-system
-  interval: 6h
+  interval: 10m
   values:
     installCRDs: true
     prometheus:
