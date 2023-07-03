@@ -4,10 +4,8 @@ metadata:
   name: cluster-apps-security-vault
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: cluster-apps-db-redis
   path: ./clusters/hetzner/apps/security/vault/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: flux-system
