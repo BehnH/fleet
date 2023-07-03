@@ -1,18 +1,5 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1
+apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-metadata:
-  name: cluster-apps-security-external-secrets
-  namespace: flux-system
-spec:
-  path: ./clusters/hetzner/apps/cert-manager/app
-  prune: false
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  # healthChecks:
-  #   - apiVersion: helm.toolkit.fluxcd.io/v1
-  #     kind: HelmRelease
-  #     name: external-secrets
-  #     namespace: security
-  interval: 6h0s
-  timeout: 30m
+resources:
+  - ./cert-manager/kustomization.yaml
+  - ./namespace.yaml
