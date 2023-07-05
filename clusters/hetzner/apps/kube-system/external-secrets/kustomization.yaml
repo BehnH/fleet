@@ -13,6 +13,6 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v1
       kind: HelmRelease
       name: external-secrets
-      namespace: security
+      namespace: kube-system
   interval: 6h0s
   timeout: 30m
