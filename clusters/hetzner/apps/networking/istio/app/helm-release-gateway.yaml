@@ -35,6 +35,7 @@ spec:
         load-balancer.hetzner.cloud/network-zone: eu-central
         load-balancer.hetzner.cloud/ipv6-disabled: "true"
         load-balancer.hetzner.cloud/disable-public-network: "false"
+        load-balancer.hetzner.cloud/health-check-port: "32375"
       externalTrafficPolicy: Cluster
       type: LoadBalancer
       ports:
