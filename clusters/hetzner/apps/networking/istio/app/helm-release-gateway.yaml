@@ -31,7 +31,6 @@ spec:
       annotations:
         load-balancer.hetzner.cloud/name: "k8s-loadbalancer"
         load-balancer.hetzner.cloud/location: "fsn1"
-        load-balancer.hetzner.cloud/hostname: "k8s-loadbalancer"
         load-balancer.hetzner.cloud/use-private-ip: "true"
         load-balancer.hetzner.cloud/network-zone: eu-central
       externalTrafficPolicy: Cluster
