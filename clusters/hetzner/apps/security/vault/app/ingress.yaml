@@ -24,7 +24,7 @@ spec:
       tls:
         httpsRedirect: true
   selector:
-    istio: ingressgateway
+    istio: ingress
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
