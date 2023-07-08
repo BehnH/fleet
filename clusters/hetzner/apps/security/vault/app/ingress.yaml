@@ -1,0 +1,47 @@
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1beta1
+metadata:
+  name: vault
+  namespace: istio-system
+spec:
+  servers:
+    - port:
+        number: 443
+        protocol: HTTPS
+        name: https
+      hosts:
+        - vault.svc.behn.dev
+      tls:
+        mode: SIMPLE
+        credentialName: behndev-global
+    - port:
+        number: 80
+        protocol: HTTP
+        name: http
+      hosts:
+        - vault.svc.behn.dev
+      tls:
+        httpsRedirect: true
+  selector:
+    istio: ingressgateway
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: vault
+  namespace: istio-system
+spec:
+  gateways:
+    - vault
+  hosts:
+    - vault.svc.behn.dev
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: vault.security.svc.cluster.local
+        port:
+          number: 8200
