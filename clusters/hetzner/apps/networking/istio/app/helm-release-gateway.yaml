@@ -26,7 +26,10 @@ spec:
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
-        whenUnsatisfiable: ScheduleAnyway
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: istio-ingress
     service:
       annotations:
         load-balancer.hetzner.cloud/name: "k8s-loadbalancer"
