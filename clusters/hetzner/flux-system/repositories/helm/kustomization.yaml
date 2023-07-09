@@ -8,4 +8,5 @@ resources:
   - istio-charts.yaml
   - jetstack-charts.yaml
   - metallb-charts.yaml
+  - minio-charts.yaml
   - prometheus-community-charts.yaml
