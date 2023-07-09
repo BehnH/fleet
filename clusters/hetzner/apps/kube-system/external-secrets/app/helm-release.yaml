@@ -18,5 +18,3 @@ spec:
   interval: 6h
   values:
     installCRDs: true
-    serviceMonitor:
-      enabled: true
