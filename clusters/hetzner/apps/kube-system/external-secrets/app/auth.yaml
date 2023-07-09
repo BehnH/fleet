@@ -3,5 +3,4 @@ kind: ServiceAccount
 metadata:
   name: external-secrets
   namespace: kube-system
-spec:
-  automountServiceAccountToken: true
+automountServiceAccountToken: true
