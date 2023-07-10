@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio
+  namespace: storage
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: minio
+  template:
+    metadata:
+      annotations:
+        proxy.istio.io/config: |
+          holdApplicationUntilProxyStarts: true
+      labels:
+        app.kubernetes.io/name: minio
+    spec:
+      containers:
+        - args:
+            - server
+            - --console-address=:9001
+            - /storage
+          env:
+            - name: MINIO_DOMAIN
+              value: s3.behn.dev,s3.hetzner.k8s.behn.dev
+            - name: MINIO_ROOT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secrets
+                  key: root_user
+            - name: MINIO_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secrets
+                  key: root_password
+          image: quay.io/minio/minio:RELEASE.2023-07-07T07-13-57Z
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /minio/health/live
+              port: 9000
+              scheme: HTTP
+            periodSeconds: 20
+            successThreshold: 1
+            timeoutSeconds: 1
+            initialDelaySeconds: 30
+          name: minio
+          ports:
+            - containerPort: 9000
+              name: http
+              protocol: TCP
+            - containerPort: 9001
+              name: http-console
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /minio/health/ready
+              port: 9000
+              scheme: HTTP
+            periodSeconds: 20
+            successThreshold: 1
+            timeoutSeconds: 1
+            initialDelaySeconds: 30
+          resources: {}
+          volumeMounts:
+            - mountPath: /storage
+              name: storage
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: minio-pvc
