@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: external-secrets-token
-  namespace: security
+  namespace: kube-system
   annotations:
     kubernetes.io/service-account.name: external-secrets
 type: kubernetes.io/service-account-token
