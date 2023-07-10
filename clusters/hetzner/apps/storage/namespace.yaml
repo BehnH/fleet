@@ -4,3 +4,4 @@ metadata:
   name: storage
   labels:
     istio-injection: enabled
+    secrets-injection: enabled
