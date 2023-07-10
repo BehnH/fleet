@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: vault-token
+  name: external-secrets-token
   namespace: security
   annotations:
-    kubernetes.io/service-account.name: vault
+    kubernetes.io/service-account.name: external-secrets
 type: kubernetes.io/service-account-token
