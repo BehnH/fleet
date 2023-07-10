@@ -41,7 +41,7 @@ spec:
         use_tls: true
         use_ssl: false
       redis:
-        host: redis.database.svc.cluster.local
+        host: redis-master.database.svc.cluster.local
     ingress:
       enabled: true
       ingressClassName: istio
@@ -66,3 +66,9 @@ spec:
     prometheus:
       serviceMonitor:
         create: true
+    resources:
+      server:
+        requests:
+          cpu: 200m
+        limits:
+          cpu: "2"
