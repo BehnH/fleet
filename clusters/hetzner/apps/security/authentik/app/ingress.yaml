@@ -1,0 +1,50 @@
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1beta1
+metadata:
+  name: authentik
+  namespace: istio-system
+spec:
+  servers:
+    - port:
+        number: 443
+        protocol: HTTPS
+        name: https
+      hosts:
+        - id.behn.dev
+        - id.hetzner.k8s.behn.dev
+      tls:
+        mode: SIMPLE
+        credentialName: behndev-global
+    - port:
+        number: 80
+        protocol: HTTP
+        name: http
+      hosts:
+        - id.behn.dev
+        - id.hetzner.k8s.behn.dev
+      tls:
+        httpsRedirect: true
+  selector:
+    istio: ingress
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: authentik
+  namespace: istio-system
+spec:
+  gateways:
+    - authentik
+  hosts:
+    - id.behn.dev
+    - id.hetzner.k8s.behn.dev
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: authentik.security.svc.cluster.local
+        port:
+          number: 80
