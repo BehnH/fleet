@@ -1,0 +1,67 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minio
+  namespace: storage
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: minio
+      version: 8.0.10
+      sourceRef:
+        kind: HelmRepository
+        name: minio-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+    cleanupOnFail: true
+  rollback:
+    timeout: 10m
+    recreate: true
+    cleanupOnFail: true
+  values:
+    persistence:
+      storageClass: hcloud-volumes
+      size: 100Gi
+    ingress:
+      enabled: true
+      ingressClassName: istio
+      hosts:
+        - host: s3.behn.dev
+          paths:
+            - path: "/"
+              pathType: Prefix
+        - host: s3.hetzner.k8s.behn.dev
+          paths:
+            - path: "/"
+              pathType: Prefix
+      tls:
+        - secretName: behndev-global
+          hosts:
+            - s3.behn.dev
+            - s3.hetzner.k8s.behn.dev
+    consoleIngress:
+      enabled: true
+      ingressClassName: istio
+      hosts:
+        - host: s3-console.behn.dev
+          paths:
+            - path: "/"
+              pathType: Prefix
+        - host: s3-console.hetzner.k8s.behn.dev
+          paths:
+            - path: "/"
+              pathType: Prefix
+      tls:
+        - secretName: behndev-global
+          hosts:
+            - s3-console.behn.dev
+            - s3-console.hetzner.k8s.behn.dev
+    resources: {}
