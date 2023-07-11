@@ -44,7 +44,7 @@ spec:
       volumes:
         - name: config
           secret:
-            secretName: headscale-settings
+            secretName: headscale-config
         - name: data
           persistentVolumeClaim:
             claimName: headscale-ui
