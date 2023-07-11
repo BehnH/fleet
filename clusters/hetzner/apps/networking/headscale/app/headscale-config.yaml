@@ -5,7 +5,7 @@ metadata:
   namespace: networking
 spec:
   secretStoreRef:
-    name: vault-kv
+    name: cluster-secrets
     kind: ClusterSecretStore
   target:
     template:
