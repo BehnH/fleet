@@ -34,7 +34,7 @@ spec:
               value: https://id.behn.dev/application/o/headscale/.well-known/openid-configuration
           envFrom:
             - secretRef:
-                name: headscale-ui-settings
+                name: headscale-ui-config
           volumeMounts:
             - name: data
               mountPath: /data
