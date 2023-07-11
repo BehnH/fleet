@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - istio/kustomization.yaml
   - istio/namespace.yaml
+  - headscale/kustomization.yaml
   - namespace.yaml
