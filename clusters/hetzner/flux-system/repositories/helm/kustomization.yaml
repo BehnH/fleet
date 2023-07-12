@@ -4,9 +4,11 @@ resources:
   - authentik-charts.yaml
   - bitnami-charts.yaml
   - external-secrets-charts.yaml
+  - grafana-charts.yaml
   - hashicorp-charts.yaml
   - hetzner-charts.yaml
   - istio-charts.yaml
   - jetstack-charts.yaml
+  - kiali-charts.yaml
   - metallb-charts.yaml
   - prometheus-community-charts.yaml
