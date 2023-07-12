@@ -31,7 +31,7 @@ spec:
             - name: AUTH_TYPE
               value: oidc
             - name: OIDC_AUTH_URL
-              value: https://id.behn.dev/application/o/headscale/.well-known/openid-configuration
+              value: https://id.hetzner.k8s.behn.dev/application/o/headscale/.well-known/openid-configuration
           envFrom:
             - secretRef:
                 name: headscale-ui-config
