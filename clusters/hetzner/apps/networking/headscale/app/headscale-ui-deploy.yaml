@@ -29,12 +29,13 @@ spec:
             - name: SCRIPT_NAME
               value: /ui
             - name: AUTH_TYPE
-              value: OIDC
+              value: oidc
             - name: OIDC_AUTH_URL
               value: https://id.behn.dev/application/o/headscale/.well-known/openid-configuration
           envFrom:
             - secretRef:
                 name: headscale-ui-config
+                namespace: networking
           volumeMounts:
             - name: data
               mountPath: /data
