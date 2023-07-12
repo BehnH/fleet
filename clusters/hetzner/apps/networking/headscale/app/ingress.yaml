@@ -26,6 +26,7 @@ spec:
   tls:
     - hosts:
         - vpn.behn.dev
+      secretName: behndev-global
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
