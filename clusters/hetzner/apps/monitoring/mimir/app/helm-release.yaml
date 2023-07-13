@@ -14,19 +14,19 @@ spec:
         name: grafana-charts
         namespace: flux-system
       interval: 5m
-    install:
-      remediation:
-        retries: 5
-    upgrade:
-      remediation:
-        retries: 5
-        remediateLastFailure: true
-      cleanupOnFail: true
-    rollback:
-      timeout: 10m
-      recreate: true
-      cleanupOnFail: true
-    valuesFrom:
-      - kind: Secret
-        name: mimir
-        valuesKey: values.yaml
+  install:
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+    cleanupOnFail: true
+  rollback:
+    timeout: 10m
+    recreate: true
+    cleanupOnFail: true
+  valuesFrom:
+    - kind: Secret
+      name: mimir-config
+      valuesKey: values.yaml
