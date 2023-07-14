@@ -1,0 +1,88 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kiali
+  namespace: monitoring
+spec:
+  interval: 6h0s
+  timeout: 30m
+  chart:
+    spec:
+      chart: kiali
+      version: 1.16.0
+      sourceRef:
+        kind: HelmRepository
+        name: kiali-charts
+        namespace: flux-system
+  values:
+    istio_namespace: istio-system
+    istio_labels:
+      app_label_name: "app.kubernetes.io/name"
+      version_label_name: "app.kubernetes.io/version"
+    auth:
+      strategy: openid
+      openid:
+        disable_rbac: true
+        client_id: "FMifeIG4nHshEG81WPX9UllbQocafSOdGFe7lEPc"
+        issuer_uri: "https://id.hetzner.k8s.behn.dev/application/o/kiali/"
+        username_claim: "preferred_username"
+      deployment:
+        image_version: latest
+        pod_labels:
+          sidecar.istio.io/inject: "true"
+        pod_annotations:
+          proxy.istio.io/config: |
+            holdApplicationUntilProxyStarts: true
+        accessible_namespaces:
+          - "**"
+        logger:
+          log_format: "json"
+        ingress:
+          enabled: true
+          override_yaml:
+            spec:
+              ingressClassName: istio
+              rules:
+                - host: kiali.hetzner.k8s.behn.dev
+                  http:
+                    paths:
+                      - path: /
+                        pathType: Prefix
+                        backend:
+                          service:
+                            name: kiali
+                            port:
+                              number: 20001
+              tls:
+                - hosts:
+                    - kiali.hetzner.k8s.behn.dev
+                  secretName: behndev-global
+      external_services:
+        custom_dashboards:
+          discovery_enabled: "false"
+        prometheus:
+          url: "http://mimir.monitoring.svc.cluster.local/prometheus"
+        grafana:
+          auth:
+            type: bearer
+          enabled: true
+          url: "https://grafana.svc.behn.dev"
+          in_cluster_url: "http://grafana.monitoring/"
+          dashboards:
+            - name: "Istio Service Dashboard"
+              variables:
+                namespace: "var-namespace"
+                service: "var-service"
+            - name: "Istio Workload Dashboard"
+              variables:
+                namespace: "var-namespace"
+                workload: "var-workload"
+            - name: "Istio Mesh Dashboard"
+            - name: "Istio Control Plane Dashboard"
+            - name: "Istio Performance Dashboard"
+            - name: "Istio Wasm Extension Dashboard"
+      server:
+        web_fqdn: kiali.hetzner.k8s.behn.dev
+        web_port: 443
+        web_root: /
+        web_schema: https

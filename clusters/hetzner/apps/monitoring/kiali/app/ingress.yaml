@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: kiali
+  namespace: istio-system
+spec:
+  gateways:
+    - cluster-gateway
+  hosts:
+    - kiali.hetzner.k8s.behn.dev
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: kiali.monitoring.svc.cluster.local
+        port:
+          number: 20001

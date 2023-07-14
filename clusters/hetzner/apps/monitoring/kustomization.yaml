@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - ./prometheus/kustomization.yaml
   - ./mimir/kustomization.yaml
+  - ./kiali/kustomization.yaml
   - namespace.yaml
