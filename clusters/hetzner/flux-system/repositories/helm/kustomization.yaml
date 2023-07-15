@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - authentik-charts.yaml
   - bitnami-charts.yaml
+  - csi-driver-smb-charts.yaml
   - external-secrets-charts.yaml
   - grafana-charts.yaml
   - hashicorp-charts.yaml
