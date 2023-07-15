@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golink
+  namespace: networking
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: golink
+      app.kubernetes.io/instance: main
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: golink
+        app.kubernetes.io/instance: main
+        sidecar.istio.io/inject: "false"
+    spec:
+      securityContext:
+          fsGroup: 1000
+      containers:
+        - image: ghcr.io/tailscale/golink:main
+          name: golink
+          command:
+            - "/golink"
+          args:
+            - "-sqlitedb"
+            - "/home/nonroot/golink.db"
+            - "-verbose"
+            - "-control-url"
+            - "https://vpn.behn.dev"
+          envFrom:
+            - secretRef:
+                name: golink-secret
+                namespace: networking
+          volumeMounts:
+            - name: data
+              mountPath: /home/nonroot
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "500Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: golink
