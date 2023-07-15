@@ -6,7 +6,7 @@ metadata:
   labels:
     substitutuion.flux.home.arps/enabled: "true"
 spec:
-  path: ./clusters/hetzner/apps/kube-system/smb-csi
+  path: ./clusters/hetzner/apps/kube-system/smb-csi/app
   prune: false
   sourceRef:
     kind: GitRepository
