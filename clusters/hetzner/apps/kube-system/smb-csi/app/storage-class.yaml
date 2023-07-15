@@ -5,11 +5,10 @@ metadata:
 provisioner: smb.csi.k8s.io
 parameters:
   source: "//u358944-sub1.your-storagebox.de/u358944-sub1"
-  csi.storage.k8s.io/provisioner-secret-name: "smb-secrets"
-  csi.storage.k8s.io/provisioner-secret-namespace: "kube-system"
   csi.storage.k8s.io/node-stage-secret-name: "smb-secrets"
   csi.storage.k8s.io/node-stage-secret-namespace: "kube-system"
-reclaimPolicy: Delete
+  createSubDir: "true"
+reclaimPolicy: Retain
 volumeBindingMode: Immediate
 mountOptions:
   - dir_mode=0777
