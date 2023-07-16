@@ -16,7 +16,6 @@ spec:
         app.kubernetes.io/name: jackett
     spec:
       hostname: jackett
-      serviceAccountName: tailscale-media-proxy
       containers:
         - name: jackett
           image: ghcr.io/linuxserver/jackett:0.21.481
@@ -31,25 +30,22 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-        - name: tailscale-proxy
-          image: ghcr.io/tailscale/tailscale:latest
           env:
-            - name: TS_KUBE_SECRET
-              value: "ts-jackett"
-            - name: TS_USERSPACE
-              value: "false"
-            - name: TS_AUTHKEY
-              valueFrom:
-                secretKeyRef:
-                  name: ts-jackett
-                  key: TS_AUTH_KEY
-                  optional: true
-            - name: TS_EXTRA_ARGS
-              value: "--hostname=jackett --login-server=https://vpn.behn.dev"
-          securityContext:
-            capabilities:
-              add:
-                - NET_ADMIN
+            - name: DOCKER_MODS
+              value: ghcr.io/behnh/docker-mod:main
+            - name: TAILSCALE_STATE_DIR
+              value: /config/tailscale
+            - name: TAILSCALE_SERVE_MODE
+              value: "https"
+            - name: TAILSCALE_SERVE_PORT
+              value: "9117"
+            - name: TAILSCALE_HOSTNAME
+              value: "jackett"
+            - name: TAILSCALE_CUSTOM_SERVER
+              value: "https://vpn.behn.dev"
+          envFrom:
+            - secretRef:
+                name: ts-jackett
   volumeClaimTemplates:
     - metadata:
         name: config
