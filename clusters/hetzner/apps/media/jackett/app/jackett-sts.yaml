@@ -16,8 +16,6 @@ spec:
         app.kubernetes.io/name: jackett
     spec:
       hostname: jackett
-      updateStrategy:
-        type: RollingUpdate
       containers:
         - name: jackett
           image: ghcr.io/linuxserver/jackett:0.21.481
