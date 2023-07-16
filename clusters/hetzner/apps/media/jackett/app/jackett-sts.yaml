@@ -50,6 +50,10 @@ spec:
               value: "true"
             - name: TS_EXTRA_ARGS
               value: "--hostname=jackett --login-server=https://vpn.behn.dev"
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
   volumeClaimTemplates:
     - metadata:
         name: config
