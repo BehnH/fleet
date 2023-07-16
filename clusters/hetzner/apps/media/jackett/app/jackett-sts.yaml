@@ -16,6 +16,7 @@ spec:
         app.kubernetes.io/name: jackett
     spec:
       hostname: jackett
+      serviceAccountName: tailscale-media-proxy
       containers:
         - name: jackett
           image: ghcr.io/linuxserver/jackett:0.21.481
