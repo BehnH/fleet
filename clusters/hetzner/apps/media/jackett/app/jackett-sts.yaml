@@ -35,7 +35,7 @@ spec:
           env:
             - name: TS_KUBE_SECRET
               value: "ts-jackett"
-            - name: TS_USERSPACe
+            - name: TS_USERSPACE
               value: "false"
             - name: TS_AUTH_KEY
               valueFrom:
