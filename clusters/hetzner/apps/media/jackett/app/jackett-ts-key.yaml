@@ -1,0 +1,14 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: ts-jackett
+  namespace: media
+spec:
+  secretStoreRef:
+    name: cluster-secrets
+    kind: ClusterSecretStore
+  data:
+    - secretKey: TS_AUTH_KEY
+      remoteRef:
+        key: kv/services/headscale/subservices
+        property: jackett_key
