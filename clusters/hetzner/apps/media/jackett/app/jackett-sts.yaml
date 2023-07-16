@@ -3,6 +3,7 @@ kind: StatefulSet
 metadata:
   labels:
     app.kubernetes.io/name: jackett
+    sidecar.istio.io/inject: "false"
   name: jackett
   namespace: media
 spec:
