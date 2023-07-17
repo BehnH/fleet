@@ -58,7 +58,7 @@ spec:
             claimName: media-pvc
         - name: incomplete-downloads
           persistentVolumeClaim:
-            claimName: media-pvc
+            claimName: media-temp-pvc
   volumeClaimTemplates:
     - metadata:
         name: config
