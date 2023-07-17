@@ -4,6 +4,7 @@ metadata:
   name: media-temp-pv
   annotations:
     pv.kubernetes.io/provisioned-by: smb.csi.k8s.io
+    app.kubernetes.io/name: media-temp-pv
 spec:
   capacity:
     storage: 1Ti
@@ -35,6 +36,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: media-temp-pvc
   namespace: media
+  annotations:
+    app.kubernetes.io/name: media-temp-pvc
 spec:
   resources:
     requests:
