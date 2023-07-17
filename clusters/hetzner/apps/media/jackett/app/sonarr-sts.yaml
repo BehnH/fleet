@@ -24,7 +24,7 @@ spec:
             requests:
               memory: "500Mi"
             limits:
-              memory: "1Gi"
+              memory: "750Mi"
           ports:
             - containerPort: 8989
               name: http
