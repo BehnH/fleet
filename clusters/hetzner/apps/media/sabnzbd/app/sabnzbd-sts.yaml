@@ -48,10 +48,6 @@ spec:
               value: "sabnzbd"
             - name: TAILSCALE_CUSTOM_SERVER
               value: "https://vpn.behn.dev"
-          envFrom:
-            - secretRef:
-                name: ts-sabnzbd
-                namespace: media
       volumes:
         - name: downloads
           persistentVolumeClaim:

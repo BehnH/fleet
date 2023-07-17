@@ -6,3 +6,4 @@ resources:
   - ./namespace.yaml
   - ./tailscale-proxy-access.yaml
   - ./jackett/kustomization.yaml
+  - ./sabnzbd/kustomization.yaml
