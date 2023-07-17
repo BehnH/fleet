@@ -52,6 +52,13 @@ spec:
             - secretRef:
                 name: ts-sabnzbd
                 namespace: media
+      volumes:
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: media-pvc
+        - name: incomplete-downloads
+          persistentVolumeClaim:
+            claimName: media-pvc
   volumeClaimTemplates:
     - metadata:
         name: config
@@ -61,27 +68,5 @@ spec:
         resources:
           requests:
             storage: 1Gi
-        accessModes:
-          - ReadWriteOnce
-    - metadata:
-        name: downloads
-        labels:
-          app.kubernetes.io/name: downloads
-      spec:
-        resources:
-          requests:
-            storage: 1Ti
-        storageClassName: hcloud-mass-storage
-        accessModes:
-          - ReadWriteOnce
-    - metadata:
-        name: incomplete-downloads
-        labels:
-          app.kubernetes.io/name: incomplete-downloads
-      spec:
-        resources:
-          requests:
-            storage: 500Gi
-        storageClassName: hcloud-mass-storage
         accessModes:
           - ReadWriteOnce
