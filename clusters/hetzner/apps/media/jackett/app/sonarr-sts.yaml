@@ -60,6 +60,10 @@ spec:
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 5
+      volumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-pvc
   volumeClaimTemplates:
     - metadata:
         name: config
@@ -69,16 +73,5 @@ spec:
         resources:
           requests:
             storage: 1Gi
-        accessModes:
-          - ReadWriteOnce
-    - metadata:
-        name: media
-        labels:
-          app.kubernetes.io/name: media
-      spec:
-        resources:
-          requests:
-            storage: 1Ti
-        storageClassName: hcloud-mass-storage
         accessModes:
           - ReadWriteOnce
