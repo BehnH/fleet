@@ -1,0 +1,14 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: ts-sonarr
+  namespace: media
+spec:
+  secretStoreRef:
+    name: cluster-secrets
+    kind: ClusterSecretStore
+  data:
+    - secretKey: TS_AUTHKEY
+      remoteRef:
+        key: kv/services/headscale/subservices
+        property: sonarr_key
