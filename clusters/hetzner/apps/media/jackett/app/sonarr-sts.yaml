@@ -48,9 +48,6 @@ spec:
               value: "sonarr"
             - name: TAILSCALE_CUSTOM_SERVER
               value: "https://vpn.behn.dev"
-          envFrom:
-            - secretRef:
-                name: ts-sonarr
           livenessProbe:
             httpGet:
               path: /ping
