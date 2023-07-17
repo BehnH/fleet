@@ -36,8 +36,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: media-pvc
   namespace: media
-  annotations:
-    app.kubernetes.io/name: media-pvc
 spec:
   resources:
     requests:
