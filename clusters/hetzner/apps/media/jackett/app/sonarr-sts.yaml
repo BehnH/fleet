@@ -77,8 +77,8 @@ spec:
           app.kubernetes.io/name: media
       spec:
         resources:
-          storageClassName: hcloud-mass-storage
           requests:
             storage: 1Ti
+        storageClassName: hcloud-mass-storage
         accessModes:
           - ReadWriteOnce
