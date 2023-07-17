@@ -20,11 +20,11 @@ spec:
       containers:
         - name: sonarr
           image: ghcr.io/linuxserver/sonarr:3.0.10.1567-ls200
-          resources:
-            requests:
-              memory: "500Mi"
-            limits:
-              memory: "1Gi"
+          # resources:
+          #   requests:
+          #     memory: "500Mi"
+          #   limits:
+          #     memory: "1Gi"
           ports:
             - containerPort: 8989
               name: http
