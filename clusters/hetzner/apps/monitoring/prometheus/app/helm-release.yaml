@@ -142,7 +142,7 @@ spec:
         enableAdminAPI: true
         # Write to Mimir
         remoteWrite:
-          - url: http://mimir.monitoring/api/v1/push
+          - url: http://mimir-nginx.monitoring/api/v1/push
         # Storage
         retention: 2d
         retentionSize: "6GB"
