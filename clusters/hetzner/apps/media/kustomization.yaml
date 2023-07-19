@@ -5,5 +5,5 @@ resources:
   - ./media-temp-pv.yaml
   - ./namespace.yaml
   - ./tailscale-proxy-access.yaml
-  - ./jackett/kustomization.yaml
+  - ./sonarr/kustomization.yaml
   - ./sabnzbd/kustomization.yaml
