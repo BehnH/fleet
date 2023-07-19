@@ -11,5 +11,6 @@ spec:
   secretName: behndev-global
   dnsNames:
     - '*.behn.dev'
+    - '*.infra.behn.dev'
     - '*.svc.behn.dev'
     - '*.hetzner.k8s.behn.dev'
