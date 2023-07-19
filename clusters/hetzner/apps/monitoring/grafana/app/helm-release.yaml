@@ -1,0 +1,51 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  timeout: 30m
+  interval: 6h
+  chart:
+    spec:
+      chart: grafana
+      version: 6.58.4
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+  values:
+    resources:
+      limits:
+        memory: 750Mi
+      requests:
+        memory: 500Mi
+    ingress:
+      enabled: true
+      hosts:
+        - grafana.infra.behn.dev
+      tls:
+        - secretName: behndev-global
+          hosts:
+            - grafana.infra.behn.dev
+    serviceMonitor:
+      enabled: true
+    persistence:
+      enabled: true
+    deploymentStrategy:
+      type: Recreate
+    envFromSecret: grafana-secrets
+    env:
+      GF_SERVER_DOMAIN: "grafana.infra.behn.dev"
+      GF_SERVER_ROOT_URL: "https://grafana.infra.behn.dev/"
+      GF_PLUGINS_ENABLE_ALPHA: "true"
+      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+      GF_AUTH_GENERIC_OAUTH_NAME: "authentik"
+      GF_AUTH_GENERIC_OAUTH_SCOPES: "openid profile email"
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://id.behn.dev/application/o/authorize/"
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://id.behn.dev/application/o/token/"
+      GF_AUTH_GENERIC_OAUTH_API_URL: "https://id.behn.dev/application/o/userinfo/"
+      GF_AUTH_SIGNOUT_REDIRECT_URL: "https://id.behn.dev/application/o/grafana/end-session/"
+      # GF_AUTH_OAUTH_AUTO_LOGIN: "true"
+      GF_LOG_CONSOLE_FORMAT: "json"
+      GF_FEATURE_TOGGLES_ENABLE: flameGraph
