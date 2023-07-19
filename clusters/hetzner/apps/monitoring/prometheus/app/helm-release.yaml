@@ -47,6 +47,10 @@ spec:
           holdApplicationUntilProxyStarts: true
     prometheus:
       enabled: false
+    prometheusSpec:
+      remoteWrite:
+        - name: "Mimir"
+          url: "http://mimir.monitoring.svc.cluster.local/api/v1/push"
     alertmanager:
       enabled: false
     grafana:
