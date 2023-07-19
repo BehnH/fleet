@@ -24,7 +24,7 @@ spec:
   csi:
     driver: smb.csi.k8s.io
     readOnly: false
-    volumeHandle: smb-server.default.svc.cluster.local/share##
+    volumeHandle: u358944-sub1.your-storagebox.de#u358944-sub1#media-temp-pv
     volumeAttributes:
       source: "//u358944-sub1.your-storagebox.de/u358944-sub1"
     nodeStageSecretRef:
