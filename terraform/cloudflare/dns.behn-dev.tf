@@ -84,7 +84,7 @@ resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_authentik" {
   proxied = false
   ttl = "1"
   type = "A"
-  value   = "142.132.244.5"
+  value   = var.cluster_ip_address
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
