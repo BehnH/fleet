@@ -30,3 +30,34 @@ spec:
     - kind: Secret
       name: mimir-config
       valuesKey: values.yaml
+  values:
+    minio:
+      enabled: false
+
+    blocks_storage:
+      s3:
+        bucket_name: mimir-blocks
+      tsdb:
+        dir: /data/tsdb
+        flush_blocks_on_shutdown: true
+
+    alertmanager_storage:
+      s3:
+        bucket_name: mimir-alertmanager
+
+    ruler_storage:
+      s3:
+        bucket_name: mimir-ruler
+
+    limits:
+      max_label_names_per_series: 100
+      max_global_series_per_user: 1500000
+      max_global_series_per_metric: 200000
+      ingestion_rate: 25000
+      ruler_max_rules_per_rule_group: 500
+      compactor_blocks_retention_period: 30d
+      out_of_order_time_window: 1h
+
+    server:
+      log_level: info
+      log_format: json
