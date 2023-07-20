@@ -31,13 +31,6 @@ spec:
               name: http
             - containerPort: 7946
               name: ring
-          resources:
-            limits:
-              cpu: "750Mi"
-              memory: "1.5Gi"
-            requests:
-              cpu: "500Mi"
-              memory: "1Gi"
           readinessProbe:
             httpGet:
               path: /ready
