@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app.kubernetes.io/name: loki
+  name: loki
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: loki
+  serviceName: "loki"
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: loki
+      anonotations:
+        proxy.istio.io/config: |
+          holdApplicationUntilProxyStarts: true
+    spec:
+      securityContext:
+        fsGroup: 10001
+        fsGroupChangePolicy: Always
+      containers:
+        - name: loki
+          args:
+            - --config.file=/etc/loki/config.yaml
+          image: grafana/loki:2.8.2
+          ports:
+            - containerPort: 3100
+              name: http
+            - containerPort: 7946
+              name: ring
+          resources:
+            limits:
+              cpu: "2"
+              memory: "2Gi"
+            requests:
+              cpu: "2"
+              memory: "2Gi"
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: http
+            initialDelaySeconds: 120
+          volumeMounts:
+            - name: config
+              mountPath: /etc/loki
+            - name: data
+              mountPath: /loki
+      volumes:
+        - name: config
+          secret:
+            secretName: loki-config
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 10Gi
+        accessModes:
+          - ReadWriteOnce

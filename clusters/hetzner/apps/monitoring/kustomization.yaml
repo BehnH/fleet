@@ -4,5 +4,6 @@ resources:
   - ./namespace.yaml
   - ./grafana/kustomization.yaml
   - ./kiali/kustomization.yaml
+  - ./loki/kustomization.yaml
   - ./mimir/kustomization.yaml
   - ./prometheus/kustomization.yaml
