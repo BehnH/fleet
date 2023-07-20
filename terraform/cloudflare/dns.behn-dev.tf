@@ -48,7 +48,7 @@ resource "cloudflare_record" "A_k8s-svc-behn-dev_hetzner" {
   proxied = false
   ttl = "1"
   type = "A"
-  value = "142.132.244.5"
+  value = var.cluster_ip_address
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -57,7 +57,7 @@ resource "cloudflare_record" "A_infra-behn-dev_grafana" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = "142.132.244.5"
+  value   = var.cluster_ip_address
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -66,7 +66,7 @@ resource "cloudflare_record" "A_infra-behn-dev_idp" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = "142.132.244.5"
+  value   = var.cluster_ip_address
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -75,7 +75,7 @@ resource "cloudflare_record" "A_svc-behn-dev_vault" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = "142.132.244.5"
+  value   = var.cluster_ip_address
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -93,7 +93,7 @@ resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_s3" {
   proxied = false
   ttl = "1"
   type = "A"
-  value   = "142.132.244.5"
+  value   = var.cluster_ip_address
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -102,7 +102,7 @@ resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_s3-console" {
   proxied = false
   ttl = "1"
   type = "A"
-  value   = "142.132.244.5"
+  value   = var.cluster_ip_address
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -111,7 +111,7 @@ resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_kiali" {
   proxied = false
   ttl = "1"
   type = "A"
-  value   = "142.132.244.5"
+  value   = var.cluster_ip_address
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -120,7 +120,7 @@ resource "cloudflare_record" "A_behn-dev_s3" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = "142.132.244.5"
+  value   = var.cluster_ip_address
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -129,7 +129,7 @@ resource "cloudflare_record" "A_behn-dev_s3-console" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = "142.132.244.5"
+  value   = var.cluster_ip_address
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -138,21 +138,11 @@ resource "cloudflare_record" "A_behn-dev_vpn" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = "142.132.244.5"
+  value   = var.cluster_ip_address
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
-
-resource "cloudflare_record" "tfer--CNAME_behn-002E-dev_7680c18fad65c0fae19eac858af048a6" {
-  name    = "_domainconnect.behn.dev"
-  proxied = "true"
-  ttl     = "1"
-  type    = "CNAME"
-  value   = "connect.domains.google.com"
-  zone_id = cloudflare_zone.zone_behn-dev.id
-}
-
-resource "cloudflare_record" "CNAME_behn-002E-dev_root" {
+resource "cloudflare_record" "CNAME_behn-dev_root" {
   name    = "behn.dev"
   proxied = "true"
   ttl     = "1"
@@ -161,7 +151,7 @@ resource "cloudflare_record" "CNAME_behn-002E-dev_root" {
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
-resource "cloudflare_record" "CNAME_behn-002E-dev_www" {
+resource "cloudflare_record" "CNAME_behn-dev_www" {
   name    = "www.behn.dev"
   proxied = "true"
   ttl     = "1"
@@ -206,7 +196,7 @@ resource "cloudflare_record" "TXT_behn-0023-dev_google-site-verification" {
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
-resource "cloudflare_record" "TXT_behn-0023-dev_keybase-site-verification" {
+resource "cloudflare_record" "TXT_behn-dev_keybase-verification" {
   name    = "behn.dev"
   proxied = "false"
   ttl     = "1"
