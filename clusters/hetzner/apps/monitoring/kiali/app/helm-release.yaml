@@ -66,7 +66,7 @@ spec:
           auth:
             type: bearer
           enabled: true
-          url: "https://grafana.svc.behn.dev"
+          url: "https://grafana.infra.behn.dev"
           in_cluster_url: "http://grafana.monitoring/"
           dashboards:
             - name: "Istio Service Dashboard"
