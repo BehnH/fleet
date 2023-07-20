@@ -1,13 +1,14 @@
 
 # Fleet 🚢
 
-_My FluxCD-managed Kubernetes cluster(s)_
+_My FluxCD-managed Kubernetes cluster(s) & Terraform definitions_
 
 ---
 
 ## 📚 Docs
 
-Docs for this repo, and what I'm running here, will be available soon™
+Docs are very much still a work-in-progress, but you can find more under [`docs/`](/docs/).
+The docs contain the initial spec for my K8s hosts, as well as k8s-hosted application and Terraform definition information. These docs are living, and are updated as I make changes to my cluster and infrastructure.
 
 ## 💻 Infrastructure
 
