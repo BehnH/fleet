@@ -30,10 +30,6 @@ spec:
             memory: 1Gi
           limits:
             memory: 2Gi
-        readinessProbe:
-            httpGet:
-              path: /ready
-              port: http
         volumeMounts:
           - name: config
             mountPath: /etc/mimir
