@@ -25,15 +25,6 @@ resource "cloudflare_record" "A_behn-dev_n8n" {
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
-resource "cloudflare_record" "A_behn-dev_spotify-dash" {
-  name    = "spotify.svc.behn.dev"
-  proxied = false
-  ttl     = "1"
-  type    = "A"
-  value   = "212.71.236.56"
-  zone_id = cloudflare_zone.zone_behn-dev.id
-}
-
 resource "cloudflare_record" "A_behn-dev_crt" {
   name    = "crt.behn.dev"
   proxied = false
@@ -48,7 +39,7 @@ resource "cloudflare_record" "A_k8s-svc-behn-dev_hetzner" {
   proxied = false
   ttl = "1"
   type = "A"
-  value = var.cluster_ip_address
+  value = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -57,7 +48,7 @@ resource "cloudflare_record" "A_infra-behn-dev_grafana" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = var.cluster_ip_address
+  value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -66,7 +57,7 @@ resource "cloudflare_record" "A_infra-behn-dev_idp" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = var.cluster_ip_address
+  value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -75,7 +66,7 @@ resource "cloudflare_record" "A_svc-behn-dev_vault" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = var.cluster_ip_address
+  value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -84,7 +75,7 @@ resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_authentik" {
   proxied = false
   ttl = "1"
   type = "A"
-  value   = var.cluster_ip_address
+  value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -93,7 +84,7 @@ resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_s3" {
   proxied = false
   ttl = "1"
   type = "A"
-  value   = var.cluster_ip_address
+  value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -102,7 +93,7 @@ resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_s3-console" {
   proxied = false
   ttl = "1"
   type = "A"
-  value   = var.cluster_ip_address
+  value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -111,7 +102,7 @@ resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_kiali" {
   proxied = false
   ttl = "1"
   type = "A"
-  value   = var.cluster_ip_address
+  value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -120,7 +111,7 @@ resource "cloudflare_record" "A_behn-dev_s3" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = var.cluster_ip_address
+  value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -129,7 +120,7 @@ resource "cloudflare_record" "A_behn-dev_s3-console" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = var.cluster_ip_address
+  value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -138,7 +129,7 @@ resource "cloudflare_record" "A_behn-dev_vpn" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = var.cluster_ip_address
+  value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -184,15 +175,6 @@ resource "cloudflare_record" "CNAME_services-behn-dev_aws-dkim-03" {
   ttl     = "1"
   type    = "CNAME"
   value   = "oyucqrqdggsaahkqdd4b2mexrplhmssm.dkim.amazonses.com"
-  zone_id = cloudflare_zone.zone_behn-dev.id
-}
-
-resource "cloudflare_record" "TXT_behn-0023-dev_google-site-verification" {
-  name    = "behn.dev"
-  proxied = "false"
-  ttl     = "1"
-  type    = "TXT"
-  value   = "google-site-verification=a5ia9VZ2q3rRxwVChlN07Aa8ssuXjNutsa737MxlmJc"
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
