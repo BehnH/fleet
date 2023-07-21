@@ -1,0 +1,38 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: languagetool
+  namespace: utilities
+  labels:
+    kustomize.toolkit.fluxcd.io/prune: disabled
+spec:
+  interval: 6h
+  chart:
+    spec:
+      chart: languagetool
+      version: 0.1.9
+      sourceRef:
+        kind: HelmRepository
+        name: someone-stole-my-name-charts
+        namespace: flux-system
+  values:
+    ingress:
+      enabled: true
+      className: istio
+      hosts:
+        - host: languagetool.behn.dev
+          paths:
+            - path: "/"
+              pathType: Prefix
+      tls:
+        - secretName: behndev-global
+          hosts:
+            - languagetool.behn.dev
+    ngram:
+      enabled: true
+      languages:
+        - "en"
+      persistence:
+        accessMode: ReadWriteOnce
+        storageClass: "hcloud-volumes"
+        size: 10Gi

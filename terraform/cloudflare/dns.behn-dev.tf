@@ -1,12 +1,3 @@
-resource "cloudflare_record" "A_behn-002E-dev_languagetool" {
-  name    = "languagetool.behn.dev"
-  proxied = false
-  ttl     = "1"
-  type    = "A"
-  value   = "212.71.236.56"
-  zone_id = cloudflare_zone.zone_behn-dev.id
-}
-
 resource "cloudflare_record" "A_behn-dev_hashicorp_vault" {
   name    = "vault.behn.dev"
   proxied = false
@@ -35,11 +26,20 @@ resource "cloudflare_record" "A_behn-dev_crt" {
 }
 
 resource "cloudflare_record" "A_k8s-svc-behn-dev_hetzner" {
-  name = "hetzner.k8s.svc.behn.dev"
+  name    = "hetzner.k8s.svc.behn.dev"
   proxied = false
-  ttl = "1"
-  type = "A"
-  value = local.hcloud_lb_addr
+  ttl     = "1"
+  type    = "A"
+  value   = local.hcloud_lb_addr
+  zone_id = cloudflare_zone.zone_behn-dev.id
+}
+
+resource "cloudflare_record" "A_behn-dev_languagetool" {
+  name    = "languagetool.behn.dev"
+  proxied = false
+  ttl     = "1"
+  type    = "A"
+  value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -71,37 +71,37 @@ resource "cloudflare_record" "A_svc-behn-dev_vault" {
 }
 
 resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_authentik" {
-  name = "id.hetzner.k8s.behn.dev"
+  name    = "id.hetzner.k8s.behn.dev"
   proxied = false
-  ttl = "1"
-  type = "A"
+  ttl     = "1"
+  type    = "A"
   value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
 resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_s3" {
-  name = "s3.hetzner.k8s.behn.dev"
+  name    = "s3.hetzner.k8s.behn.dev"
   proxied = false
-  ttl = "1"
-  type = "A"
+  ttl     = "1"
+  type    = "A"
   value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
 resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_s3-console" {
-  name = "s3-console.hetzner.k8s.behn.dev"
+  name    = "s3-console.hetzner.k8s.behn.dev"
   proxied = false
-  ttl = "1"
-  type = "A"
+  ttl     = "1"
+  type    = "A"
   value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
 resource "cloudflare_record" "A_hetzner-k8s-svc-behn-dev_kiali" {
-  name = "kiali.hetzner.k8s.behn.dev"
+  name    = "kiali.hetzner.k8s.behn.dev"
   proxied = false
-  ttl = "1"
-  type = "A"
+  ttl     = "1"
+  type    = "A"
   value   = local.hcloud_lb_addr
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
@@ -179,12 +179,12 @@ resource "cloudflare_record" "CNAME_services-behn-dev_aws-dkim-03" {
 }
 
 resource "cloudflare_record" "TXT_behn-dev_google-site-verification" {
-    name = "behn.dev"
-    proxied = "false"
-    ttl = "1"
-    type = "TXT"
-    value = "google-site-verification=0LOVOt5rZdmxVZ99XztErJbrejNFxWl-z2tx1hdMb-Y"
-    zone_id = cloudflare_zone.zone_behn-dev.id
+  name    = "behn.dev"
+  proxied = "false"
+  ttl     = "1"
+  type    = "TXT"
+  value   = "google-site-verification=0LOVOt5rZdmxVZ99XztErJbrejNFxWl-z2tx1hdMb-Y"
+  zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
 resource "cloudflare_record" "TXT_behn-dev_keybase-verification" {
