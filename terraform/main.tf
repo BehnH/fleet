@@ -23,15 +23,41 @@ terraform {
       source  = "hetznercloud/hcloud"
       version = "1.41.0"
     }
+
+    vault = {
+        source = "hashicorp/vault"
+        version = "3.18.0"
+    }
   }
 }
 
-variable "cloudflare_api_token" {}
+data "vault_generic_secret" "cloudflare" {
+    path = "kv/external/cloudflare"
+}
 
 provider "cloudflare" {
-  api_token = var.cloudflare_api_token
+  api_token = data.vault_generic_secret.cloudflare.data["api_token"]
 }
 
 module "cloudflare" {
   source = "./cloudflare/"
+}
+
+data "vault_generic_secret" "hcloud" {
+    path = "kv/external/hetzner"
+}
+
+provider "hcloud" {
+  token = data.vault_generic_secret.hcloud.data["api_token"]
+}
+
+module "hcloud" {
+  source = "./hetzner/"
+}
+
+variable "hashicorp_vault_token" {}
+
+provider "vault" {
+    address = "https://vault.svc.behn.dev/"
+    token = var.hashicorp_vault_token
 }
