@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app.kubernetes.io/name: radarr
+    sidecar.istio.io/inject: "false"
+  name: radarr
+  namespace: media
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: radarr
+  serviceName: "radarr"
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: radarr
+    spec:
+      hostname: radarr
+      containers:
+        - name: radarr
+          image: ghcr.io/linuxserver/radarr:4.6.4.7568-ls180
+          resources:
+            requests:
+              memory: "250Mi"
+            limits:
+              memory: "500Mi"
+          ports:
+            - containerPort: 7878
+              name: http
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: media
+              mountPath: /media
+            - name: media-temp
+              mountPath: /media-temp
+          env:
+            - name: TZ
+              value: "Europe/London"
+            - name: DOCKER_MODS
+              value: ghcr.io/behnh/docker-mod:main
+            - name: TAILSCALE_STATE_DIR
+              value: /config/tailscale
+            - name: TAILSCALE_SERVE_MODE
+              value: "http"
+            - name: TAILSCALE_SERVE_PORT
+              value: "7878"
+            - name: TAILSCALE_HOSTNAME
+              value: "radarr"
+            - name: TAILSCALE_CUSTOM_SERVER
+              value: "https://vpn.behn.dev"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 7878
+              scheme: HTTP
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5
+      volumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-pvc
+        - name: media-temp
+          persistentVolumeClaim:
+            claimName: media-temp-pvc
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+        labels:
+          app.kubernetes.io/name: radarr
+      spec:
+        resources:
+          requests:
+            storage: 1Gi
+        accessModes:
+          - ReadWriteOnce

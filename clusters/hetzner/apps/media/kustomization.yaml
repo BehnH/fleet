@@ -6,5 +6,6 @@ resources:
   - ./namespace.yaml
   - ./tailscale-proxy-access.yaml
   - ./nzbhydra2/kustomization.yaml
+  - ./radarr/kustomization.yaml
   - ./sabnzbd/kustomization.yaml
   - ./sonarr/kustomization.yaml
