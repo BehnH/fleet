@@ -13,3 +13,4 @@ resources:
   - kiali-charts.yaml
   - metallb-charts.yaml
   - prometheus-community-charts.yaml
+  - someone-stole-my-name-charts.yaml
