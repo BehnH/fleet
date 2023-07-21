@@ -178,6 +178,15 @@ resource "cloudflare_record" "CNAME_services-behn-dev_aws-dkim-03" {
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
+resource "cloudflare_record" "TXT_behn-dev_google-site-verification" {
+    name = "behn.dev"
+    proxied = "false"
+    ttl = "1"
+    type = "TXT"
+    value = "google-site-verification=0LOVOt5rZdmxVZ99XztErJbrejNFxWl-z2tx1hdMb-Y"
+    zone_id = cloudflare_zone.zone_behn-dev.id
+}
+
 resource "cloudflare_record" "TXT_behn-dev_keybase-verification" {
   name    = "behn.dev"
   proxied = "false"
