@@ -20,6 +20,14 @@ resource "hcloud_server" "k8s_master-2" {
     local.k8s_worker_fw_id
   ]
 
+  network {
+    network_id = local.k8s_network_id
+  }
+
+  ssh_keys = [
+    data.hcloud_ssh_key.personal_ssh_key.id
+  ]
+
   labels = {
     "k8s-type" = "master"
   }
