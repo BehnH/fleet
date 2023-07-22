@@ -25,39 +25,52 @@ terraform {
     }
 
     vault = {
-        source = "hashicorp/vault"
-        version = "3.18.0"
+      source  = "hashicorp/vault"
+      version = "3.18.0"
     }
   }
 }
 
+variable "hashicorp_vault_token" {}
+
+data "vault_generic_secret" "authentik" {
+  path = "kv/external/authentik"
+}
+
 data "vault_generic_secret" "cloudflare" {
-    path = "kv/external/cloudflare"
+  path = "kv/external/cloudflare"
+}
+
+data "vault_generic_secret" "hcloud" {
+  path = "kv/external/hetzner"
+}
+
+provider "authentik" {
+  token = data.vault_generic_secret.authentik.data["api_token"]
+  url   = "https://id.behn.dev"
 }
 
 provider "cloudflare" {
   api_token = data.vault_generic_secret.cloudflare.data["api_token"]
 }
 
-module "cloudflare" {
-  source = "./cloudflare/"
-}
-
-data "vault_generic_secret" "hcloud" {
-    path = "kv/external/hetzner"
-}
-
 provider "hcloud" {
   token = data.vault_generic_secret.hcloud.data["api_token"]
 }
 
-module "hcloud" {
-  source = "./hetzner/"
+provider "vault" {
+  address = "https://vault.svc.behn.dev/"
+  token   = var.hashicorp_vault_token
 }
 
-variable "hashicorp_vault_token" {}
+module "authentik" {
+  source = "./authentik/"
+}
 
-provider "vault" {
-    address = "https://vault.svc.behn.dev/"
-    token = var.hashicorp_vault_token
+module "cloudflare" {
+  source = "./cloudflare/"
+}
+
+module "hcloud" {
+  source = "./hetzner/"
 }
