@@ -35,6 +35,20 @@ spec:
                 secretKeyRef:
                   name: minio-secrets
                   key: root_password
+            # OIDC config
+            - name: MINIO_IDENTITY_OPENID_CONFIG_URL
+              value: https://id.behn.dev/application/o/minio/.well-known/openid-configuration
+            - name: MINIO_IDENTITY_OPENID_CLIENT_ID
+              value: QeK4sLaowIn11fdmfPa6atsk2YW19ObOx4itVb0f
+            - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secrets
+                  key: oidc_client_secret
+            - name: MINIO_IDENTITY_OPENID_CLAIM_NAME
+              value: minio
+            - name: MINIO_IDENTITY_OPENID_SCOPES
+              value: openid,profile,email,minio
           image: quay.io/minio/minio:RELEASE.2023-07-07T07-13-57Z
           livenessProbe:
             failureThreshold: 3
