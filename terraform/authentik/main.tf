@@ -19,11 +19,6 @@ data "authentik_flow" "default-source-enrollment" {
   slug = "default-source-enrollment"
 }
 
-resource "authentik_service_connection_kubernetes" "local" {
-  name  = "Local Kubernetes Cluster"
-  local = true
-}
-
 data "authentik_property_mapping_saml" "defaults" {
   managed_list = [
     "goauthentik.io/providers/saml/upn",
