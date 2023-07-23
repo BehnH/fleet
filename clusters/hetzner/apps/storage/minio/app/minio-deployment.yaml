@@ -26,7 +26,7 @@ spec:
             - name: MINIO_DOMAIN
               value: s3.behn.dev,s3.hetzner.k8s.behn.dev
             - name: MINIO_BROWSER_REDIRECT_URL
-              value: https://s3.behn.dev
+              value: https://s3-console.behn.dev
             - name: MINIO_ROOT_USER
               valueFrom:
                 secretKeyRef:
