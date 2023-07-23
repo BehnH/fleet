@@ -25,6 +25,8 @@ spec:
           env:
             - name: MINIO_DOMAIN
               value: s3.behn.dev,s3.hetzner.k8s.behn.dev
+            - name: MINIO_BROWSER_REDIRECT_URL
+              value: https://s3.behn.dev
             - name: MINIO_ROOT_USER
               valueFrom:
                 secretKeyRef:
@@ -36,6 +38,8 @@ spec:
                   name: minio-secrets
                   key: root_password
             # OIDC config
+            - name: MINIO_IDENTITY_OPENID_CLAIM_USERINFO
+              value: https://id.behn.dev/application/o/userinfo/
             - name: MINIO_IDENTITY_OPENID_CONFIG_URL
               value: https://id.behn.dev/application/o/minio/.well-known/openid-configuration
             - name: MINIO_IDENTITY_OPENID_CLIENT_ID
@@ -45,10 +49,10 @@ spec:
                 secretKeyRef:
                   name: minio-secrets
                   key: oidc_client_secret
-            - name: MINIO_IDENTITY_OPENID_CLAIM_NAME
-              value: minio
             - name: MINIO_IDENTITY_OPENID_SCOPES
               value: openid,profile,email,minio
+            - name: MINIO_IDENTITY_OPENID_DISPLAY_NAME
+              value: Authentik
           image: quay.io/minio/minio:RELEASE.2023-07-07T07-13-57Z
           livenessProbe:
             failureThreshold: 3
