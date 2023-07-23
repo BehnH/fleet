@@ -153,3 +153,7 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
+        # Scrape jobs
+        additionalScrapeConfigs:
+          name: prometheus-scrape-configs
+          key: jobs.yaml
