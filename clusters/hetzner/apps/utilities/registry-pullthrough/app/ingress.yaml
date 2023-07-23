@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: registry-pullthrough
+  namespace: utilities
+spec:
+  ingressClassName: istio
+  rules:
+    - host: registry-proxy.svc.behn.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: registry-pullthrough
+                port:
+                  number: 5000
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - registry-proxy.svc.behn.dev
+      secretName: behndev-global
