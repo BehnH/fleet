@@ -24,10 +24,9 @@ spec:
       openid:
         disable_rbac: true
         client_id: "FMifeIG4nHshEG81WPX9UllbQocafSOdGFe7lEPc"
-        issuer_uri: "https://id.hetzner.k8s.behn.dev/application/o/kiali/"
+        issuer_uri: "https://id.behn.dev/application/o/kiali/"
         username_claim: "preferred_username"
       deployment:
-        image_version: latest
         pod_labels:
           sidecar.istio.io/inject: "true"
         pod_annotations:
