@@ -154,6 +154,7 @@ spec:
                 requests:
                   storage: 10Gi
         # Scrape jobs
-        additionalScrapeConfigs:
+        additionalScrapeConfigsSecret:
+          enabled: true
           name: prometheus-scrape-configs
           key: jobs.yaml
