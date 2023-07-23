@@ -1,6 +1,7 @@
 resource "authentik_provider_oauth2" "oauth-provider_vault" {
-  name               = "Hashicorp Vault"
-  authorization_flow = data.authentik_flow.default-authorization-flow.id
+  name                = "Hashicorp Vault"
+  authentication_flow = data.authentik_flow.default-source-authentication.id
+  authorization_flow  = data.authentik_flow.default-authorization-flow.id
 
   client_id   = "Aw4q3wXEYrFNSBgtna848pXwZKVIXODMFwTw7zyX"
   signing_key = "5fcfe879-a0e6-4365-8ac4-d742b59a95f9"
