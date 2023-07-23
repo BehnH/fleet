@@ -16,7 +16,7 @@ resource "authentik_provider_oauth2" "oauth-provider_minio" {
     "fb30e55b-bfed-43a4-b2b3-d9108edb939b"
   ]
 
-  token_validity = "minutes=30"
+  access_token_validity = "minutes=30"
 }
 
 resource "authentik_application" "oauth-app_minio" {
@@ -25,6 +25,8 @@ resource "authentik_application" "oauth-app_minio" {
   group = "Storage"
 
   meta_description = "MinIO is a High-Performance Object Storage application, designed with S3 API compatibility."
+  meta_icon        = "https://s3.behn.dev/public/authentik_images/MINIO_Bird.png"
+  meta_publisher   = "MinIO"
 
   protocol_provider = authentik_provider_oauth2.oauth-provider_minio.id
 }

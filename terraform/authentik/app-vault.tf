@@ -17,7 +17,7 @@ resource "authentik_provider_oauth2" "oauth-provider_vault" {
     "fb30e55b-bfed-43a4-b2b3-d9108edb939b"
   ]
 
-  token_validity = "minutes=30"
+  access_token_validity = "minutes=30"
 }
 
 resource "authentik_application" "oauth-app_vault" {
