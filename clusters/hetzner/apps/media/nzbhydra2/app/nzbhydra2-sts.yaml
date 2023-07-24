@@ -19,7 +19,7 @@ spec:
       hostname: nzbhydra2
       containers:
         - name: nzbhydra2
-          image: ghcr.io/linuxserver/nzbhydra2:v5.1.9-ls105
+          image: ghcr.io/linuxserver/nzbhydra2:v5.1.10-ls105
           resources:
             requests:
               memory: "500Mi"
