@@ -1,7 +1,7 @@
 resource "hcloud_network" "kubernetes_network" {
-  name = "kubernetes"
+  name     = "kubernetes"
   ip_range = "10.98.0.0/16"
-  
+
   expose_routes_to_vswitch = false
 }
 
