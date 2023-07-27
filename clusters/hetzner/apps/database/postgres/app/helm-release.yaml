@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: postgres
+  name: postgresql
   namespace: database
 spec:
   interval: 6h0m
