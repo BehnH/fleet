@@ -1,5 +1,8 @@
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  name: authentik-istio-operator
+  namespace: istio-system
 spec:
   meshConfig:
     accessLogFile: /dev/stdout
