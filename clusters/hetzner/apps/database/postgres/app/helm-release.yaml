@@ -26,6 +26,7 @@ spec:
     timeout: 10m
     recreate: true
     cleanupOnFail: true
-  values:
-    global:
-      storageClass: hcloud-volumes
+  valuesFrom:
+    - kind: Secret
+      name: postgres-config
+      valuesKey: values.yaml
