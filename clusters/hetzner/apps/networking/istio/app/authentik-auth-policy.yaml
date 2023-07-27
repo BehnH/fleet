@@ -7,13 +7,13 @@ spec:
   selector:
     matchLabels:
       istio: ingress
-    action: CUSTOM
-    provider:
-      name: "authentik"
-    rules:
-      - to:
-        - operation:
-            hosts:
-              - "alertmanager.infra.behn.dev"
-              - "mimir.infra.behn.dev"
-              - "prometheus.infra.behn.dev"
+  action: CUSTOM
+  provider:
+    name: "authentik"
+  rules:
+    - to:
+      - operation:
+          hosts:
+            - "alertmanager.infra.behn.dev"
+            - "mimir.infra.behn.dev"
+            - "prometheus.infra.behn.dev"
