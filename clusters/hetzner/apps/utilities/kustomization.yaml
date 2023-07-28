@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
   - ./languagetool/kustomization.yaml
   - ./penpot/kustomization.yaml
-  - ./registry-pullthrough/kustomization.yaml
   - namespace.yaml
