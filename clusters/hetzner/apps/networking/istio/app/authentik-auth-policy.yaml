@@ -14,4 +14,6 @@ spec:
     - to:
       - operation:
           hosts:
-            - "prometheus.infra.behn.dev"
+            - "*.infra.behn.dev"
+          notHosts:
+            - "grafana.infra.behn.dev"
