@@ -1,16 +1,15 @@
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
-  name: authentik-istio-operator
+  name: authentik
   namespace: istio-system
 spec:
   meshConfig:
-    accessLogFile: /dev/stdout
     extensionProviders:
       - name: "authentik"
         envoyExtAuthzHttp:
           service: "authentik.security.svc.cluster.local"
-          port: "9000"
+          port: "9300"
           pathPrefix: "/outpost.goauthentik.io/auth/envoy"
           headersToDownstreamOnAllow:
             - cookie
@@ -18,4 +17,4 @@ spec:
             - set-cookie
             - x-authentik-*
           includeRequestHeadersInCheck:
-              - cookie
+            - cookie
