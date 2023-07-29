@@ -1,27 +1,9 @@
-resource "cloudflare_record" "A_behn-dev_hashicorp_vault" {
-  name    = "vault.behn.dev"
+resource "cloudflare_record" "A_ext-behn-dev_vpn" {
+  name    = "vpn.ext.behn.dev"
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = "212.71.236.56"
-  zone_id = cloudflare_zone.zone_behn-dev.id
-}
-
-resource "cloudflare_record" "A_behn-dev_n8n" {
-  name    = "flow.svc.behn.dev"
-  proxied = false
-  ttl     = "1"
-  type    = "A"
-  value   = "212.71.236.56"
-  zone_id = cloudflare_zone.zone_behn-dev.id
-}
-
-resource "cloudflare_record" "A_behn-dev_crt" {
-  name    = "crt.behn.dev"
-  proxied = false
-  ttl     = "1"
-  type    = "A"
-  value   = "212.71.236.56"
+  value   = "65.108.209.88"
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
