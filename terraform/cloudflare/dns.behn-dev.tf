@@ -3,7 +3,7 @@ resource "cloudflare_record" "A_ext-behn-dev_vpn" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = "65.108.209.88"
+  value   = "65.21.246.236"
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
