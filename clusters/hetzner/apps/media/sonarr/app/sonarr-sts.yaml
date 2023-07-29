@@ -12,7 +12,7 @@ spec:
     matchLabels: &label
       app.kubernetes.io/name: *app
   serviceName: *app
-  
+
   template:
     metadata:
       labels: &app_labels
@@ -50,7 +50,7 @@ spec:
               value: "sonarr"
             - name: TAILSCALE_CUSTOM_SERVER
               value: "https://vpn.behn.dev"
-              
+
           livenessProbe:
             httpGet:
               path: /ping
@@ -60,16 +60,17 @@ spec:
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 5
-            
+
       volumes:
         - name: media
           persistentVolumeClaim:
             claimName: media-pvc
-            
+
   volumeClaimTemplates:
     - metadata:
         name: config
-        labels: *app_labels
+        labels:
+          << : *app_labels
           app.kubernetes.io/name: config
       spec:
         resources:
