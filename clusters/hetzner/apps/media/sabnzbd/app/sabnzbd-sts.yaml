@@ -2,24 +2,24 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  labels:
-    app.kubernetes.io/name: sabnzbd
-    sidecar.istio.io/inject: "false"
-  name: sabnzbd
+  name: &name sabnzbd
   namespace: media
+  labels:
+    app.kubernetes.io/name: *name
+    sidecar.istio.io/inject: "false"
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: sabnzbd
-  serviceName: "sabnzbd"
+      app.kubernetes.io/name: *name
+  serviceName: *name
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: sabnzbd
+        app.kubernetes.io/name: *name
     spec:
-      hostname: sabnzbd
+      hostname: *name
       containers:
-        - name: sabnzbd
+        - name: *name
           image: ghcr.io/linuxserver/sabnzbd:4.0.3
           resources:
             requests:
@@ -46,7 +46,7 @@ spec:
             - name: TAILSCALE_SERVE_PORT
               value: "8080"
             - name: TAILSCALE_HOSTNAME
-              value: "sabnzbd"
+              value: *name
             - name: TAILSCALE_CUSTOM_SERVER
               value: "https://vpn.behn.dev"
       volumes:

@@ -2,24 +2,24 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  labels:
-    app.kubernetes.io/name: radarr
-    sidecar.istio.io/inject: "false"
-  name: radarr
+  name: &name radarr
   namespace: media
+  labels:
+    app.kubernetes.io/name: *name
+    sidecar.istio.io/inject: "false"
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: radarr
-  serviceName: "radarr"
+      app.kubernetes.io/name: *name
+  serviceName: *name
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: radarr
+        app.kubernetes.io/name: *name
     spec:
-      hostname: radarr
+      hostname: *name
       containers:
-        - name: radarr
+        - name: *name
           image: ghcr.io/linuxserver/radarr:4.6.4.7568-ls180
           resources:
             requests:
@@ -48,7 +48,7 @@ spec:
             - name: TAILSCALE_SERVE_PORT
               value: "7878"
             - name: TAILSCALE_HOSTNAME
-              value: "radarr"
+              value: *name
             - name: TAILSCALE_CUSTOM_SERVER
               value: "https://vpn.behn.dev"
           livenessProbe:
@@ -71,7 +71,7 @@ spec:
     - metadata:
         name: config
         labels:
-          app.kubernetes.io/name: radarr
+          app.kubernetes.io/name: *name
       spec:
         resources:
           requests:

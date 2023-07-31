@@ -47,7 +47,7 @@ spec:
             - name: TAILSCALE_SERVE_PORT
               value: "8989"
             - name: TAILSCALE_HOSTNAME
-              value: "sonarr"
+              value: *name
             - name: TAILSCALE_CUSTOM_SERVER
               value: "https://vpn.behn.dev"
 
