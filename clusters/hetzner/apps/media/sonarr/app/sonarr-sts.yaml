@@ -70,7 +70,7 @@ spec:
     - metadata:
         name: config
         labels:
-          << : *app_labels
+          <<: *app_labels
           app.kubernetes.io/name: config
       spec:
         resources:
