@@ -21,7 +21,7 @@ spec:
       hostname: penpot-backend
       containers:
         - name: penpot-backend
-          image: penpotapp/backend:1.18.6
+          image: penpotapp/backend:1.19.0
           resources:
             requests:
               memory: "500Mi"
