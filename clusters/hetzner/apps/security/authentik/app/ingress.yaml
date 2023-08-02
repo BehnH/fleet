@@ -1,3 +1,4 @@
+---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
@@ -10,11 +11,11 @@ spec:
     - id.behn.dev
     - id.hetzner.k8s.behn.dev
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        host: authentik.security.svc.cluster.local
-        port:
-          number: 80
+    - match:
+      - uri:
+          prefix: /
+      route:
+        - destination:
+            host: authentik.security.svc.cluster.local
+            port:
+              number: 80
