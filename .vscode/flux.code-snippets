@@ -19,6 +19,7 @@
         "scope": "yaml",
         "prefix": "helm-repo",
         "body": [
+            "---",
             "apiVersion: source.toolkit.fluxcd.io/v1beta2",
             "kind: HelmRepository",
             "metadata:",
@@ -27,7 +28,8 @@
             "spec:",
             "  interval: 1h0m0s",
             "  url: $2",
-            "  timeout: 10m0s"
+            "  timeout: 10m0s",
+            " "
         ],
         "description": "Helm Repository"
     },
@@ -35,6 +37,7 @@
         "scope": "yaml",
         "prefix": "flux-app-ks",
         "body": [
+            "---",
             "apiVersion: kustomize.toolkit.fluxcd.io/v1beta1",
             "kind: Kustomization",
             "metadata:",
@@ -48,6 +51,7 @@
             "    name: flux-system",
             "  interval: 6h0s",
             "  timeout: 30m0s",
+            " "
         ]
     }
 }
