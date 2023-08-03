@@ -220,8 +220,8 @@ spec:
 
             # List of DNS servers to expose to clients.
             nameservers:
-              - 1.1.1.1 # cloudflare primary
-              - 1.0.0.1 # cloudflare secondary
+              - 8.8.8.8 # Google primary
+              - 8.8.4.4 # Google secondary
 
             # NextDNS (see https://tailscale.com/kb/1218/nextdns/).
             # "abc123" is example NextDNS ID, replace with yours.
