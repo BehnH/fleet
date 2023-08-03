@@ -1,0 +1,20 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: languagetool
+  namespace: istio-system
+spec:
+  gateways:
+    - cluster-gateway
+  hosts:
+    - languagetool.behn.dev
+  http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+        - destination:
+            host: languagetool.utilities.svc.cluster.local
+            port:
+              number: 80
