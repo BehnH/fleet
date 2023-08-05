@@ -2,6 +2,9 @@ FROM --platform=arm64 ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Run initial update
+RUN apt-get update
+
 # Install SSH server
 RUN apt-get install -y --no-install-recommends openssh-server && \
 	ssh-keygen -A && \
