@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -17,28 +18,28 @@ spec:
         app.kubernetes.io/name: mimir
     spec:
       containers:
-      - name: mimir
-        image: grafana/mimir:2.9.0
-        args:
-          - --config.file=/etc/mimir/config.yaml
-        ports:
-          - containerPort: 8080
-            name: http
-        resources:
-          requests:
-            cpu: "2"
-            memory: 1Gi
-          limits:
-            memory: 2Gi
-        readinessProbe:
+        - name: mimir
+          image: grafana/mimir:2.9.0
+          args:
+            - --config.file=/etc/mimir/config.yaml
+          ports:
+            - containerPort: 8080
+              name: http
+          resources:
+            requests:
+              cpu: "2"
+              memory: 1Gi
+            limits:
+              memory: 2Gi
+          readinessProbe:
             httpGet:
               path: /ready
               port: http
-        volumeMounts:
-          - name: config
-            mountPath: /etc/mimir
-          - name: data
-            mountPath: /data
+          volumeMounts:
+            - name: config
+              mountPath: /etc/mimir
+            - name: data
+              mountPath: /data
       volumes:
         - name: config
           secret:
