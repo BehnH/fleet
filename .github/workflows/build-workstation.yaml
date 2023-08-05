@@ -31,6 +31,6 @@ jobs:
           context: images/workstation/
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/BehnH/workstation:latest,
-            ghcr.io/BehnH/workstation:auto-${{ steps.time.outputs.time }}
+            ghcr.io/behnh/workstation:latest,
+            ghcr.io/behnh/workstation:auto-${{ steps.time.outputs.time }}
           push: ${{ github.ref == 'refs/heads/main' }}
