@@ -20,7 +20,7 @@ RUN yes | unminimize && \
 		# Fancy shell stuff
 		bat fzf \
 		# Network tools
-		nmap mtr-tiny host net-tools iputils-ping traceroute dnsutils \
+		nmap mtr-tiny host net-tools iputils-ping traceroute dnsutils && \
 	echo "%sudo ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers && \
 	echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
 	echo "en_UK.UTF-8 UTF-8" >> /etc/locale.gen && \
