@@ -18,3 +18,27 @@ spec:
         kind: HelmRepository
         name: istio-charts
         namespace: flux-system
+  values:
+    meshConfig:
+      serviceSettings:
+        - settings:
+            clusterLocal: true
+          hosts:
+            - "kiali.monitoring.svc.cluster.local"
+      accessLogFile: "/dev/stdout"
+      accessLogEncoding: "JSON"
+      enableTracing: false
+      enablePrometheusMerge: true
+      extensionProviders:
+        - envoyExtAuthzHttp:
+            headersToDownstreamOnAllow:
+              - cookie
+            headersToUpstreamOnAllow:
+              - set-cookie
+              - x-authentik-*
+            includeRequestHeadersInCheck:
+              - cookie
+            pathPrefix: /outpost.goauthentik.io/auth/envoy
+            port: "9000"
+            service: authentik.security.svc.cluster.local
+          name: authentik
