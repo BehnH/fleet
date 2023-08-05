@@ -34,6 +34,15 @@ resource "cloudflare_record" "A_svc-behn-dev_registry-proxy" {
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
+resource "cloudflare_record" "A_infra-behn-dev_alertmanager" {
+  name    = "alertmanager.infra.behn.dev"
+  proxied = false
+  ttl     = "1"
+  type    = "A"
+  value   = local.hcloud_lb_addr
+  zone_id = cloudflare_zone.zone_behn-dev.id
+}
+
 resource "cloudflare_record" "A_infra-behn-dev_grafana" {
   name    = "grafana.infra.behn.dev"
   proxied = false
@@ -43,7 +52,7 @@ resource "cloudflare_record" "A_infra-behn-dev_grafana" {
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
-resource "cloudflare_record" "A_infra-behn-dev_prometheus" {
+resource "cloudflare_record" "A_infra-behn-dev_mimir" {
   name    = "mimir.infra.behn.dev"
   proxied = false
   ttl     = "1"
@@ -52,8 +61,8 @@ resource "cloudflare_record" "A_infra-behn-dev_prometheus" {
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
-resource "cloudflare_record" "A_infra-behn-dev_alertmanager" {
-  name    = "alertmanager.infra.behn.dev"
+resource "cloudflare_record" "A_infra-behn-dev_prometheus" {
+  name    = "prometheus.infra.behn.dev"
   proxied = false
   ttl     = "1"
   type    = "A"
