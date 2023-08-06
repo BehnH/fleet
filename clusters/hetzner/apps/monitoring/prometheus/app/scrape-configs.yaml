@@ -12,7 +12,7 @@ spec:
     template:
       data:
         jobs.yaml: |
-          - job_name: istiod
+          - job_name: "istiod"
             kubernetes_sd_configs:
               - role: endpoints
                 namespaces:
@@ -23,7 +23,7 @@ spec:
                   [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
                 action: keep
                 regex: istiod;http-monitoring
-          - job_name: envoy-stats
+          - job_name: 'envoy-stats'
             metrics_path: /stats/prometheus
             kubernetes_sd_configs:
               - role: pod
