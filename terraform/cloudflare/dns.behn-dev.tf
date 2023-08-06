@@ -7,8 +7,8 @@ resource "cloudflare_record" "A_ext-behn-dev_vpn" {
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
-resource "cloudflare_record" "A_k8s-svc-behn-dev_hetzner" {
-  name    = "hetzner.k8s.svc.behn.dev"
+resource "cloudflare_record" "A_k8s-behn-dev_hetzner" {
+  name    = "hetzner.k8s.behn.dev"
   proxied = false
   ttl     = "1"
   type    = "A"
