@@ -12,7 +12,7 @@ resource "cloudflare_record" "A_k8s-svc-behn-dev_hetzner" {
   proxied = false
   ttl     = "1"
   type    = "A"
-  value   = local.hcloud_lb_addr
+  value   = "49.12.17.239"
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
