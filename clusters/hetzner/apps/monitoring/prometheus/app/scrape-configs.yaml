@@ -12,7 +12,7 @@ spec:
     template:
       data:
         jobs.yaml: |
-          - job_name: "istiod"
+          - job_name: istiod
             kubernetes_sd_configs:
               - role: endpoints
                 namespaces:
@@ -23,7 +23,7 @@ spec:
                   [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
                 action: keep
                 regex: istiod;http-monitoring
-          - job_name: 'envoy-stats'
+          - job_name: envoy-stats
             metrics_path: /stats/prometheus
             kubernetes_sd_configs:
               - role: pod
@@ -37,6 +37,39 @@ spec:
             scheme: https
             static_configs:
               - targets: [s3.behn.dev]
+          - job_name: felix_metrics
+            scrape_interval: 5s
+            scheme: http
+            kubernetes_sd_configs:
+            - role: endpoints
+            relabel_configs:
+            - source_labels: [__meta_kubernetes_service_name]
+              regex: felix-metrics-svc
+              replacement: $1
+              action: keep
+          - job_name: typha_metrics
+            scrape_interval: 5s
+            scheme: http
+            kubernetes_sd_configs:
+            - role: endpoints
+            relabel_configs:
+            - source_labels: [__meta_kubernetes_service_name]
+              regex: typha-metrics-svc
+              replacement: $1
+              action: keep
+            - source_labels: [__meta_kubernetes_pod_container_port_name]
+              regex: calico-typha
+              action: drop
+          - job_name: kube_controllers_metrics
+            scrape_interval: 5s
+            scheme: http
+            kubernetes_sd_configs:
+            - role: endpoints
+            relabel_configs:
+            - source_labels: [__meta_kubernetes_service_name]
+              regex: calico-kube-controllers-metrics
+              replacement: $1
+              action: keep
   dataFrom:
     - extract:
         key: kv/services/prometheus-scraping
