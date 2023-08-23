@@ -23,8 +23,8 @@ data:
           - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
           - http://sysctl.org/cameleon/hosts
           - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
-          - https://easylist.to/easylist/easylist.txt
-          - https://easylist.to/easylist/easyprivacy.txt
+          # - https://easylist.to/easylist/easylist.txt
+          # - https://easylist.to/easylist/easyprivacy.txt
         special:
           - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts
       clientGroupsBlock:
