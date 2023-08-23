@@ -36,3 +36,10 @@ spec:
         accessMode: ReadWriteOnce
         storageClass: "hcloud-volumes"
         size: 10Gi
+    resources:
+      limits:
+        cpu: 300m
+        memory: 750Mi
+      requests:
+        cpu: 100m
+        memory: 256Mi
