@@ -222,3 +222,12 @@ resource "cloudflare_record" "TXT_behn-dev_bluesky-handle" {
   value   = "did=did:plc:23k5nzcdjszudgk6sk5dtdxn"
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
+
+resource "cloudflare_record" "TXT_behn-dev_discord-dv" {
+  name    = "_discord.behn.dev"
+  proxied = "false"
+  ttl     = "1"
+  type    = "TXT"
+  value   = "dh=32d8d942ab681f9a49deabcf724af9e32caea364"
+  zone_id = cloudflare_zone.zone_behn-dev.id
+}
