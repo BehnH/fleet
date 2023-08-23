@@ -1,10 +1,10 @@
+---
 apiVersion: notification.toolkit.fluxcd.io/v1beta2
 kind: Alert
 metadata:
   name: discord-all
   namespace: flux-system
 spec:
-  summary: New Flux Alert
   providerRef:
     name: discord
   eventSeverity: info
