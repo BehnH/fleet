@@ -14,7 +14,7 @@ data:
         - https://dns.google/dns-query
     upstreamTimeout: 2s
     startVerifyUpstream: true
-    connectIPVersion: both
+    connectIPVersion: dual
     blocking:
       # definition of blacklist groups. Can be external link (http/https) or local file
       blackLists:
