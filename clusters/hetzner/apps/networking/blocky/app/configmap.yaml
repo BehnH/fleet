@@ -27,14 +27,14 @@ data:
           - https://easylist.to/easylist/easyprivacy.txt
         special:
           - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts
-    clientGroupsBlock:
-      default:
-        - ads
-        - special
-    blockType: nxDomain
-    blockTTL: 5m
-    refreshPeriod: 4h
-    downloadTimeout: 4m
-    downloadAttempts: 5
-    downloadCooldown: 10s
-    startStrategy: failOnError
+      clientGroupsBlock:
+        default:
+          - ads
+          - special
+      blockType: nxDomain
+      blockTTL: 5m
+      refreshPeriod: 4h
+      downloadTimeout: 4m
+      downloadAttempts: 5
+      downloadCooldown: 10s
+      startStrategy: failOnError
