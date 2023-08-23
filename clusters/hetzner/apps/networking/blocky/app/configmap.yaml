@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: blocky
+  namespace: networking
+data:
+  config.yaml: |
+    upstream:
+      default:
+        # Google DNS
+        - 8.8.8.8
+        - 8.8.4.4
+        # Google DoH
+        - https://dns.google/dns-query
+    upstreamTimeout: 2s
+    startVerifyUpstream: true
+    connectIPVersion: both
+    blocking:
+      # definition of blacklist groups. Can be external link (http/https) or local file
+      blackLists:
+        ads:
+          - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+          - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+          - http://sysctl.org/cameleon/hosts
+          - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
+          - https://easylist.to/easylist/easylist.txt
+          - https://easylist.to/easylist/easyprivacy.txt
+        special:
+          - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts
+    clientGroupsBlock:
+      default:
+        - ads
+        - special
+    blockType: nxDomain
+    blockTTL: 5m
+    refreshPeriod: 4h
+    downloadTimeout: 4m
+    downloadAttempts: 5
+    downloadCooldown: 10s
+    startStrategy: failOnError
