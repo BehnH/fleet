@@ -224,7 +224,7 @@ resource "cloudflare_record" "TXT_behn-dev_bluesky-handle" {
 }
 
 resource "cloudflare_record" "TXT_behn-dev_discord-dv" {
-  name    = "_discord.behn.dev"
+  name    = "_discord.behn.dev."
   proxied = "false"
   ttl     = "1"
   type    = "TXT"
