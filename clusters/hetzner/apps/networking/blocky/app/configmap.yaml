@@ -10,8 +10,6 @@ data:
         # Google DNS
         - 8.8.8.8
         - 8.8.4.4
-        # Google DoH
-        - https://dns.google/dns-query
     upstreamTimeout: 2s
     startVerifyUpstream: true
     connectIPVersion: dual
