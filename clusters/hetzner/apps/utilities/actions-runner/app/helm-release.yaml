@@ -9,7 +9,7 @@ spec:
   interval: 6h
   chart:
     spec:
-      chart: gha-runner-scale-set-controller
+      chart: actions-runner-controller
       version: 0.5.0
       sourceRef:
         kind: HelmRepository
