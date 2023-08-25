@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app.kubernetes.io/name: spotify-dashboard
+    app.kubernetes.io/instance: main
+  name: spotify-dashboard
+  namespace: utilities
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: spotify-dashboard
+      app.kubernetes.io/instance: main
+  serviceName: "spotify-dashboard"
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: spotify-dashboard
+        app.kubernetes.io/instance: main
+    spec:
+      hostname: spotify-dashboard
+      containers:
+        - name: spotify-dashboard
+          image: ghcr.io/behnh/spotify-dashboard:bleeding-edge
+          resources:
+            requests:
+              memory: "500Mi"
+            limits:
+              memory: "1Gi"
+          ports:
+            - containerPort: 3000
+              name: http
+          env:
+            - name: PUBLIC_URL
+              value: https://listen.behn.dev
+          envFrom:
+            - name: SPOTIFY_CLIENT_ID
+              secretRef:
+                name: spotify-secrets
+                key: SPOTIFY_CLIENT_ID
+            - name: SPOTIFY_CLIENT_SECRET
+              secretRef:
+                name: spotify-secrets
+                key: SPOTIFY_CLIENT_SECRET
+            - name: JWT_TOKEN_SECRET
+              secretRef:
+                name: spotify-secrets
+                key: JWT_TOKEN_SECRET
+            - name: DATABASE_URL
+              secretRef:
+                name: spotify-secrets
+                key: DATABASE_URL
+

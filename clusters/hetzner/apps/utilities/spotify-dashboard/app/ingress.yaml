@@ -1,0 +1,20 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: spotify-dashboard
+  namespace: istio-system
+spec:
+  gateways:
+    - cluster-gateway
+  hosts:
+    - listen.behn.dev
+  http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+        - destination:
+            host: spotify-dashboard.utilities.svc.cluster.local
+            port:
+              number: 3000
