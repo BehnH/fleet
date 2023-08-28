@@ -36,3 +36,8 @@ data:
       downloadAttempts: 5
       downloadCooldown: 10s
       startStrategy: failOnError
+    log:
+      level: debug
+      format: json
+      timestamp: true
+      privacy: false
