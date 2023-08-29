@@ -23,10 +23,8 @@ spec:
           image: ghcr.io/linuxserver/radarr:4.6.4.7568-ls180
           resources:
             requests:
-              cpu: "300m"
               memory: "250Mi"
             limits:
-              cpu: "500m"
               memory: "500Mi"
           ports:
             - containerPort: 7878
@@ -77,6 +75,6 @@ spec:
       spec:
         resources:
           requests:
-            storage: 10Gi
+            storage: 1Gi
         accessModes:
           - ReadWriteOnce
