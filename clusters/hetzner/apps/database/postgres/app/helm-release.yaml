@@ -31,3 +31,8 @@ spec:
     - kind: Secret
       name: postgres-config
       valuesKey: values.yaml
+  values:
+    architecture: "replication"
+    replication:
+      synchronousCommit: "on"
+      numSyuchronousReplicas: 1
