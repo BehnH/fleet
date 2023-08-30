@@ -160,12 +160,12 @@ resource "cloudflare_record" "A_behn-dev_listen" {
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
-resource "cloudflare_record" "A_behn-dev_root" {
+resource "cloudflare_record" "CNAME_behn-dev_root" {
   name    = "behn.dev"
   proxied = "false"
   ttl     = "1"
-  type    = "A"
-  value   = "76.76.21.21"
+  type    = "CNAME"
+  value   = "cname.vercel-dns.com"
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
@@ -174,7 +174,7 @@ resource "cloudflare_record" "CNAME_behn-dev_www" {
   proxied = "false"
   ttl     = "1"
   type    = "CNAME"
-  value   = "cname.vercel-dns.com."
+  value   = "cname.vercel-dns.com"
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
