@@ -82,7 +82,5 @@ spec:
             - name: "Istio Performance Dashboard"
             - name: "Istio Wasm Extension Dashboard"
       server:
-        web_fqdn: kiali.hetzner.k8s.behn.dev
-        web_port: 443
+        port: 443
         web_root: /
-        web_schema: https
