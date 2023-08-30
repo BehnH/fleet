@@ -90,7 +90,7 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /storage
-              subPath: /minio
+              subPath: minio/
               name: storage
       volumes:
         - name: storage
