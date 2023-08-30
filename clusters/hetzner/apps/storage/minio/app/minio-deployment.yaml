@@ -53,6 +53,11 @@ spec:
               value: openid,profile,email,minio
             - name: MINIO_IDENTITY_OPENID_DISPLAY_NAME
               value: Authentik
+            # Monitoring
+            - name: MINIO_PROMETHEUS_URL
+              value: http://mimir.monitoring.svc.cluster.local
+            - name: MINIO_PROMETHEUS_JOB_ID
+              value: minio-job
           image: quay.io/minio/minio:RELEASE.2023-07-07T07-13-57Z
           livenessProbe:
             failureThreshold: 3
@@ -85,6 +90,7 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /storage
+              subPath: /minio
               name: storage
       volumes:
         - name: storage
