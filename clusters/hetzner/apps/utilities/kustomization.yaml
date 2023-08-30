@@ -5,5 +5,4 @@ resources:
   - ./actions-runner/kustomization.yaml
   - ./languagetool/kustomization.yaml
   - ./spotify-dashboard/kustomization.yaml
-  - ./workstation/kustomization.yaml
   - namespace.yaml
