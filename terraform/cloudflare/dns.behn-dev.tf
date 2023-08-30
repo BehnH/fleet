@@ -162,7 +162,7 @@ resource "cloudflare_record" "A_behn-dev_listen" {
 
 resource "cloudflare_record" "A_behn-dev_root" {
   name    = "behn.dev"
-  proxied = "true"
+  proxied = "false"
   ttl     = "1"
   type    = "A"
   value   = "76.76.21.21"
@@ -171,7 +171,7 @@ resource "cloudflare_record" "A_behn-dev_root" {
 
 resource "cloudflare_record" "CNAME_behn-dev_www" {
   name    = "www.behn.dev"
-  proxied = "true"
+  proxied = "false"
   ttl     = "1"
   type    = "CNAME"
   value   = "cname.vercel-dns.com."
