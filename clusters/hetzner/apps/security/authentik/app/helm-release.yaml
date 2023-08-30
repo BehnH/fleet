@@ -62,8 +62,6 @@ spec:
             - id.hetzner.k8s.behn.dev
     postgresql:
       enabled: true
-      diagnosticMode:
-        enabled: true
       image:
         tag: 15.2.0-debian-11-r26
     redis:
