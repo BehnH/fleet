@@ -41,6 +41,10 @@ spec:
         port: 587
         use_tls: true
         use_ssl: false
+      postgresql:
+        host: postgresql.database.svc.cluster.local
+        name: authentik
+        username: authentik
       redis:
         host: redis-master.database.svc.cluster.local
     ingress:
@@ -60,10 +64,6 @@ spec:
           hosts:
             - id.behn.dev
             - id.hetzner.k8s.behn.dev
-    postgresql:
-      enabled: true
-      image:
-        tag: 15.2.0-debian-11-r26
     redis:
       enabled: false
     prometheus:
