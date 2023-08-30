@@ -62,6 +62,8 @@ spec:
             - id.hetzner.k8s.behn.dev
     postgresql:
       enabled: true
+      image:
+        tag: 11.19.0-debian-11-r4
     redis:
       enabled: false
     prometheus:
