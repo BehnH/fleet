@@ -10,11 +10,11 @@ spec:
   hosts:
     - languagetool.behn.dev
   http:
-    - match:
-      - uri:
-          prefix: /
-      route:
-        - destination:
-            host: languagetool.utilities.svc.cluster.local
-            port:
-              number: 80
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: languagetool.utilities.svc.cluster.local
+        port:
+          number: 80
