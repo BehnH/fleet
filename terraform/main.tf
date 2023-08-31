@@ -16,7 +16,7 @@ terraform {
 
     authentik = {
       source  = "goauthentik/authentik"
-      version = "2023.6.0"
+      version = "2023.8.0"
     }
 
     hcloud = {
@@ -26,7 +26,7 @@ terraform {
 
     vault = {
       source  = "hashicorp/vault"
-      version = "3.19.0"
+      version = "3.20.0"
     }
   }
 }
