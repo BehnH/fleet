@@ -27,60 +27,60 @@ spec:
         client_id: "FMifeIG4nHshEG81WPX9UllbQocafSOdGFe7lEPc"
         issuer_uri: "https://id.behn.dev/application/o/kiali/"
         username_claim: "preferred_username"
-      deployment:
-        pod_labels:
-          sidecar.istio.io/inject: "true"
-        pod_annotations:
-          proxy.istio.io/config: |
-            holdApplicationUntilProxyStarts: true
-        accessible_namespaces:
-          - "**"
-        logger:
-          log_format: "json"
-        ingress:
-          enabled: true
-          override_yaml:
-            spec:
-              ingressClassName: istio
-              rules:
-                - host: kiali.hetzner.k8s.behn.dev
-                  http:
-                    paths:
-                      - path: /
-                        pathType: Prefix
-                        backend:
-                          service:
-                            name: kiali
-                            port:
-                              number: 20001
-              tls:
-                - hosts:
-                    - kiali.hetzner.k8s.behn.dev
-                  secretName: behndev-global
-      external_services:
-        custom_dashboards:
-          discovery_enabled: "false"
-        prometheus:
-          url: "http://mimir.monitoring.svc.cluster.local/prometheus"
-        grafana:
-          auth:
-            type: bearer
-          enabled: true
-          url: "https://grafana.infra.behn.dev"
-          in_cluster_url: "http://grafana.monitoring/"
-          dashboards:
-            - name: "Istio Service Dashboard"
-              variables:
-                namespace: "var-namespace"
-                service: "var-service"
-            - name: "Istio Workload Dashboard"
-              variables:
-                namespace: "var-namespace"
-                workload: "var-workload"
-            - name: "Istio Mesh Dashboard"
-            - name: "Istio Control Plane Dashboard"
-            - name: "Istio Performance Dashboard"
-            - name: "Istio Wasm Extension Dashboard"
+    deployment:
+      pod_labels:
+        sidecar.istio.io/inject: "true"
+      pod_annotations:
+        proxy.istio.io/config: |
+          holdApplicationUntilProxyStarts: true
+      accessible_namespaces:
+        - "**"
+      logger:
+        log_format: "json"
+      ingress:
+        enabled: true
+        override_yaml:
+          spec:
+            ingressClassName: istio
+            rules:
+              - host: kiali.hetzner.k8s.behn.dev
+                http:
+                  paths:
+                    - path: /
+                      pathType: Prefix
+                      backend:
+                        service:
+                          name: kiali
+                          port:
+                            number: 20001
+            tls:
+              - hosts:
+                  - kiali.hetzner.k8s.behn.dev
+                secretName: behndev-global
+    external_services:
+      custom_dashboards:
+        discovery_enabled: "false"
+      prometheus:
+        url: "http://mimir.monitoring.svc.cluster.local/prometheus"
+      grafana:
+        auth:
+          type: bearer
+        enabled: true
+        url: "https://grafana.infra.behn.dev"
+        in_cluster_url: "http://grafana.monitoring/"
+        dashboards:
+          - name: "Istio Service Dashboard"
+            variables:
+              namespace: "var-namespace"
+              service: "var-service"
+          - name: "Istio Workload Dashboard"
+            variables:
+              namespace: "var-namespace"
+              workload: "var-workload"
+          - name: "Istio Mesh Dashboard"
+          - name: "Istio Control Plane Dashboard"
+          - name: "Istio Performance Dashboard"
+          - name: "Istio Wasm Extension Dashboard"
     server:
       port: 443
       web_root: /
