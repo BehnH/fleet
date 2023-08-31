@@ -81,6 +81,6 @@ spec:
             - name: "Istio Control Plane Dashboard"
             - name: "Istio Performance Dashboard"
             - name: "Istio Wasm Extension Dashboard"
-      server:
-        port: 443
-        web_root: /
+    server:
+      port: 443
+      web_root: /
