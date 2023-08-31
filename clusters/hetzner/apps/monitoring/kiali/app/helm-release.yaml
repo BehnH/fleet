@@ -52,7 +52,7 @@ spec:
                         service:
                           name: kiali
                           port:
-                            number: 20001
+                            number: 80
             tls:
               - hosts:
                   - kiali.hetzner.k8s.behn.dev
@@ -82,5 +82,5 @@ spec:
           - name: "Istio Performance Dashboard"
           - name: "Istio Wasm Extension Dashboard"
     server:
-      port: 443
+      port: 80
       web_root: /
