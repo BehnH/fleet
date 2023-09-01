@@ -3,4 +3,5 @@ kind: Namespace
 metadata:
   name: monitoring
   labels:
+    istio-injection: enabled
     secrets-injection: "enabled"
