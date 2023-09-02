@@ -39,6 +39,6 @@ spec:
             includeRequestHeadersInCheck:
               - cookie
             pathPrefix: /outpost.goauthentik.io/auth/envoy
-            port: "80"
-            service: authentik.security.svc.cluster.local
+            port: "9000"
+            service: ak-outpost-authentik-embedded-outpost.security.svc.cluster.local
           name: authentik
