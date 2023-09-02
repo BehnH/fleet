@@ -6,6 +6,7 @@ metadata:
   namespace: monitoring
   labels:
     app.kubernetes.io/name: loki
+    istio-injection: disabled
 spec:
   ports:
     - port: 80
