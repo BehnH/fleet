@@ -11,6 +11,14 @@ spec:
     - cluster-gateway
   http:
     - match:
+      - uri:
+          prefix: /outpost.goauthentik.io
+      route:
+      - destination:
+          host: ak-outpost-authentik-embedded-outpost.security.svc.cluster.local
+          port:
+            number: 9000
+    - match:
         - uri:
             prefix: /
       route:
