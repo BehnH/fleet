@@ -7,9 +7,14 @@ metadata:
 spec:
   hosts:
     - prometheus.infra.behn.dev
+  gateways:
+    - cluster-gateway
   http:
-    - route:
+    - match:
+        - uri:
+            prefix: /
+      route:
         - destination:
+            host: prometheus-kube-prometheus-prometheus.monitoring.svc.cluster.local
             port:
               number: 9090
-            host: prometheus-kube-prometheus-prometheus.monitoring.svc.cluster.local
