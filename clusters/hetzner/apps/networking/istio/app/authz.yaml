@@ -18,5 +18,3 @@ spec:
               - "*.infra.behn.dev"
             notHosts:
               - grafana.infra.behn.dev
-            notPaths:
-              - /outpost.goauthentik.io/*
