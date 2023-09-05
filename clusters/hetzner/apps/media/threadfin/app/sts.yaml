@@ -23,9 +23,9 @@ spec:
           image: ghcr.io/behnh/threadfin:latest-edge
           resources:
             requests:
-              memory: "250Mi"
-            limits:
               memory: "500Mi"
+            limits:
+              memory: "1Gi"
           ports:
             - containerPort: 34400
               name: http
