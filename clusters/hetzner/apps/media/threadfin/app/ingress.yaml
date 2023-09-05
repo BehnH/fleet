@@ -1,0 +1,20 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: threadfin
+  namespace: istio-system
+spec:
+  hosts:
+    - threadfin.hetzner.k8s.behn.dev
+  gateways:
+    - cluster-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: threadfin.media.svc.cluster.local
+            port:
+              number: 34400
