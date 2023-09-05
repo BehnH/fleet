@@ -33,7 +33,7 @@ spec:
             - name: config
               mountPath: /config
           env:
-            - name: THREADFIN_CONFIG
+            - name: THREADFIN_CONF
               value: /config
   volumeClaimTemplates:
     - metadata:
