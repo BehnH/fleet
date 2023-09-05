@@ -20,7 +20,7 @@ spec:
       hostname: *name
       containers:
         - name: *name
-          image: fyb3roptik/threadfin:latest
+          image: ghcr.io/behnh/threadfin:latest-edge
           resources:
             requests:
               memory: "250Mi"
