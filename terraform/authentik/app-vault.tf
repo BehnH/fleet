@@ -27,7 +27,7 @@ resource "authentik_application" "oauth-app_vault" {
   group = "Security"
 
   meta_description = "Vault secures, stores, and tightly controls access to tokens, passwords, certificates, API keys, and other secrets in modern computing."
-  meta_icon        = "https://s3.behn.dev/public/authentik_images/vault-logo.png"
+  meta_icon        = "https://s3.behn.dev/public/authentik_images/vault.png"
   meta_publisher   = "Hashicorp"
 
   protocol_provider = authentik_provider_oauth2.oauth-provider_vault.id
