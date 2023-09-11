@@ -26,7 +26,7 @@ jobs:
         id: time
         run: echo "time=$(date +'%s')" >> $GITHUB_OUTPUT
       - name: Build and push Docker images
-        uses: docker/build-push-action@v4.1.1
+        uses: docker/build-push-action@v4.2.1
         with:
           context: images/workstation/
           platforms: linux/amd64,linux/arm64
