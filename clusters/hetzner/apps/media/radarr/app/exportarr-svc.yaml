@@ -2,16 +2,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: radarr-exporter
+  name: &name radarr-exporter
   namespace: media
-  labels:
-    app.kubernetes.io/name: radarr-exporter
-    app.kubernetes.io/instance: radarr-exporter
+  labels: &app_labels
+    app.kubernetes.io/name: *name
+    app.kubernetes.io/instance: *name
 spec:
   clusterIP: None
   selector:
-    app.kubernetes.io/name: radarr-exporter
-    app.kubernetes.io/instance: radarr-exporter
+    <<: *app_labels
   ports:
     - name: monitoring
       port: 9707
