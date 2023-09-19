@@ -33,7 +33,7 @@ spec:
             - sabnzbd
           env:
             - name: PORT
-              value: "80"
+              value: "9707"
             - name: URL
               value: "http://sabnzbd"
             - name: APIKEY
