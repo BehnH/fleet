@@ -38,27 +38,15 @@ spec:
       type: Recreate
     envFromSecret: grafana-secrets
     env:
-      - name: "GF_SERVER_DOMAIN"
-        value: "grafana.infra.behn.dev"
-      - name: "GF_SERVER_ROOT_URL"
-        value: "https://grafana.infra.behn.dev/"
-      - name: "GF_PLUGINS_ENABLE_ALPHA"
-        value: "true"
-      - name: "GF_AUTH_GENERIC_OAUTH_ENABLED"
-        value: "true"
-      - name: "GF_AUTH_GENERIC_OAUTH_NAME"
-        value: "authentik"
-      - name: "GF_AUTH_GENERIC_OAUTH_SCOPES"
-        value: "openid profile email"
-      - name: "GF_AUTH_GENERIC_OAUTH_AUTH_URL"
-        value: "https://id.behn.dev/application/o/authorize/"
-      - name: "GF_AUTH_GENERIC_OAUTH_TOKEN_URL"
-        value: "https://id.behn.dev/application/o/token/"
-      - name: "GF_AUTH_GENERIC_OAUTH_API_URL"
-        value: "https://id.behn.dev/application/o/userinfo/"
-      - name: "GF_AUTH_SIGNOUT_REDIRECT_URL"
-        value: "https://id.behn.dev/application/o/grafana/end-session/"
-      - name: "GF_LOG_CONSOLE_FORMAT"
-        value: "json"
-      - name: "GF_FEATURE_TOGGLES_ENABLE"
-        value: "flameGraph"
+      GF_SERVER_DOMAIN: grafana.infra.behn.dev
+      GF_SERVER_ROOT_URL: https://grafana.infra.behn.dev/
+      GF_PLUGINS_ENABLE_ALPHA: "true"
+      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+      GF_AUTH_GENERIC_OAUTH_NAME: authentik
+      GF_AUTH_GENERIC_OAUTH_SCOPES: "openid profile email"
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://id.behn.dev/application/o/authorize/
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://id.behn.dev/application/o/token/
+      GF_AUTH_GENERIC_OAUTH_API_URL: https://id.behn.dev/application/o/userinfo/
+      GF_AUTH_SIGNOUT_REDIRECT_URL: https://id.behn.dev/application/o/grafana/end-session/
+      GF_LOG_CONSOLE_FORMAT: "json"
+      GF_FEATURE_TOGGLES_ENABLE: "flameGraph"
