@@ -42,7 +42,7 @@ spec:
         use_tls: true
         use_ssl: false
       postgresql:
-        host: postgresql.database.svc.cluster.local
+        host: postgresql-primary.database.svc.cluster.local
         name: authentik
         username: authentik
       redis:
