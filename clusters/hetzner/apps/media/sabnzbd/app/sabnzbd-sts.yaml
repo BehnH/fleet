@@ -20,7 +20,7 @@ spec:
       hostname: *name
       containers:
         - name: *name
-          image: ghcr.io/linuxserver/sabnzbd:4.0.3
+          image: ghcr.io/linuxserver/sabnzbd:4.1.0
           resources:
             requests:
               memory: "500Mi"
