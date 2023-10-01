@@ -22,7 +22,7 @@ spec:
       hostname: spotify-dashboard
       containers:
         - name: spotify-dashboard
-          image: ghcr.io/behnh/spotify-dashboard:bleeding-edge
+          image: ghcr.io/behnh/spotify-dashboard:79d345e8dc781bd2bfd75e4373b068e6b9ad598b
           resources:
             requests:
               memory: "500Mi"
