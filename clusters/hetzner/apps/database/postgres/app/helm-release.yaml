@@ -27,6 +27,9 @@ spec:
     timeout: 10m
     recreate: true
     cleanupOnFail: true
+  values:
+    diagnosticMode:
+      enabled: true
   valuesFrom:
     - kind: Secret
       name: postgres-config
