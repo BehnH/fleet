@@ -14,6 +14,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: arc-charts
+        namespace: flux-system
 
   install:
     crds: CreateReplace
@@ -60,9 +61,3 @@ spec:
         memory: 250M
       limits:
         memory: 450M
-
-  valuesFrom:
-    - kind: Secret
-      name: actions-runner
-      valuesKey: values.yaml
-      namespace: utilities
