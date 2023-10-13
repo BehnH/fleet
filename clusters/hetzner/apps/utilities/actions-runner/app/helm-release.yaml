@@ -22,4 +22,48 @@ spec:
     crds: CreateReplace
 
   values:
-    fullNameOverride: gha-runner-scale-set-controller
+    image:
+      repository: ghcr.io/actions-runner-controller/actions-runner-controller
+      tag: v0.27.5-52fc819
+    authSecret:
+      create: false
+      name: arc-secrets
+    securityContext:
+      capabilities:
+        drop:
+          - ALL
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+
+    githubWebhookServer:
+      enabled: true
+      logFormat: json
+
+    metrics:
+      serviceMonitor:
+        enabled: false
+      port: 8080
+      proxy:
+        enabled: false
+    actionsMetrics:
+      serviceMonitor:
+        enabled: false
+      port: 8080
+      proxy:
+        enabled: false
+    actionsMetricsServer:
+      enabled: false
+
+    resources:
+      requests:
+        cpu: 10m
+        memory: 250M
+      limits:
+        memory: 450M
+
+  valuesFrom:
+    - kind: Secret
+      name: actions-runner
+      valuesKey: values.yaml
+      namespace: utilities
