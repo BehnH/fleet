@@ -22,6 +22,7 @@ spec:
     crds: CreateReplace
 
   values:
+    fullnameOverride: actions-runner-controller
     image:
       repository: ghcr.io/actions-runner-controller/actions-runner-controller
       tag: v0.27.5-52fc819
