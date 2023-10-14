@@ -40,7 +40,7 @@ spec:
     githubWebhookServer:
       enabled: true
       logFormat: json
-      fullNameOverride: arc-github-webhooks
+      fullnameOverride: arc-github-webhooks
 
     metrics:
       serviceMonitor:
