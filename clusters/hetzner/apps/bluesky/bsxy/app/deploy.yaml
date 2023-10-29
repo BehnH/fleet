@@ -23,6 +23,12 @@ spec:
         - containerPort: 3000
           name: http
           protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
         envFrom:
         - secretRef:
             name: bsxy-secrets
