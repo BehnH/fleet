@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: bsxy
-        image: ghcr.io/behnh/bsxy.app:latest
+        image: ghcr.io/behnh/bsxy.app:main
         resources:
           limits:
             memory: "128Mi"
