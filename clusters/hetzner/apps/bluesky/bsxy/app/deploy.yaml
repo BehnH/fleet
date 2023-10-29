@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bsxy
+  namespace: bluesky
+spec:
+  selector:
+    matchLabels:
+      app: bsxy
+  template:
+    metadata:
+      labels:
+        app: bsxy
+    spec:
+      containers:
+      - name: bsxy
+        image: ghcr.io/behnh/bsxy.app:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+        envFrom:
+        - secretRef:
+            name: bsxy-secrets

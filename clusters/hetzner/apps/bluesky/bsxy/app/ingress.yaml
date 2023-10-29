@@ -1,0 +1,20 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: bsxy
+  namespace: istio-system
+spec:
+  gateways:
+    - cluster-gateway
+  hosts:
+    - bsxy.app
+  http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+        - destination:
+            host: bsxy.bluesky.svc.cluster.local
+            port:
+              number: 3000
