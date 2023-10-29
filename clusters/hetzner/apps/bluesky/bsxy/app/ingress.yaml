@@ -9,6 +9,7 @@ spec:
     - cluster-gateway
   hosts:
     - bsxy.app
+    - www.bsxy.app
   http:
     - match:
       - uri:
