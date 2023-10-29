@@ -12,6 +12,7 @@ spec:
         name: https
       hosts:
         - "*.behn.dev"
+        - "*.bsxy.app"
         - "*.hetzner.k8s.behn.dev"
       tls:
         mode: SIMPLE
@@ -22,6 +23,7 @@ spec:
         name: http
       hosts:
         - "*.behn.dev"
+        - "*.bsxy.app"
         - "*.hetzner.k8s.behn.dev"
       tls:
         httpsRedirect: true
