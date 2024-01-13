@@ -30,4 +30,4 @@ spec:
     cleanupOnFail: true
   valuesFrom:
     - kind: Secret
-      name: tailscale
+      name: tailscale-secrets
