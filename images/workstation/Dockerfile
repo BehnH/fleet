@@ -70,10 +70,10 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
 	setcap cap_ipc_lock= /usr/bin/vault
 
 # Install Istioctl
-COPY --from=istio/istioctl:1.19.3 /usr/local/bin/istioctl /usr/bin/istioctl
+COPY --from=istio/istioctl:1.20.1 /usr/local/bin/istioctl /usr/bin/istioctl
 
 # Install FluxCD
-COPY --from=fluxcd/flux-cli:v2.1.2 /usr/local/bin/flux /usr/bin/flux
+COPY --from=fluxcd/flux-cli:v2.2.2 /usr/local/bin/flux /usr/bin/flux
 
 COPY ./sshd_config /etc/ssh/sshd_config
 

@@ -1,5 +1,5 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: istio-istiod
@@ -13,7 +13,7 @@ spec:
   chart:
     spec:
       chart: istiod
-      version: 1.19.3
+      version: 1.20.1
       sourceRef:
         kind: HelmRepository
         name: istio-charts
