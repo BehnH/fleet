@@ -38,18 +38,6 @@ spec:
           env:
             - name: TZ
               value: "Europe/London"
-            - name: DOCKER_MODS
-              value: ghcr.io/behnh/docker-mod:main
-            - name: TAILSCALE_STATE_DIR
-              value: /config/tailscale
-            - name: TAILSCALE_SERVE_MODE
-              value: "http"
-            - name: TAILSCALE_SERVE_PORT
-              value: "8989"
-            - name: TAILSCALE_HOSTNAME
-              value: *app
-            - name: TAILSCALE_CUSTOM_SERVER
-              value: "https://vpn.behn.dev"
 
           livenessProbe:
             httpGet:

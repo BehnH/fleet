@@ -36,19 +36,6 @@ spec:
               mountPath: /downloads
             - name: incomplete-downloads
               mountPath: /incomplete-downloads
-          env:
-            - name: DOCKER_MODS
-              value: ghcr.io/behnh/docker-mod:main
-            - name: TAILSCALE_STATE_DIR
-              value: /config/tailscale
-            - name: TAILSCALE_SERVE_MODE
-              value: "http"
-            - name: TAILSCALE_SERVE_PORT
-              value: "8080"
-            - name: TAILSCALE_HOSTNAME
-              value: *name
-            - name: TAILSCALE_CUSTOM_SERVER
-              value: "https://vpn.behn.dev"
       volumes:
         - name: downloads
           persistentVolumeClaim:

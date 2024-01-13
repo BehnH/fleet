@@ -7,6 +7,8 @@ metadata:
   labels:
     app.kubernetes.io/name: *name
 spec:
+  type: LoadBalancer
+  loadBalancerClass: tailscale
   selector:
     app.kubernetes.io/name: *name
   ports:
