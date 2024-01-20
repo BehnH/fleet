@@ -31,6 +31,3 @@ spec:
     - kind: Secret
       name: postgres-config
       valuesKey: values.yaml
-  values:
-    diagnosticMode:
-      enabled: true
