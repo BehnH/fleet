@@ -1,0 +1,14 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster-apps-db-cockroachdb
+  namespace: flux-system
+spec:
+  path: ./clusters/hetzner/apps/database/cockroachdb/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  interval: 6h0s
+  timeout: 30m
