@@ -7,3 +7,4 @@ resources:
   - ./loki/kustomization.yaml
   - ./mimir/kustomization.yaml
   - ./prometheus/kustomization.yaml
+  - ./tempo/kustomization.yaml
