@@ -4,6 +4,8 @@ kind: HelmRelease
 metadata:
   name: postgresql
   namespace: database
+  annotations:
+    tailscale.com/expose: "true"
 spec:
   interval: 6h0m
   chart:
