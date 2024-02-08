@@ -1,0 +1,49 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: teleport
+  namespace: teleport-cluster
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.releases.teleport.dev
+      chart: teleport
+      version: 15.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: teleport-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+    cleanupOnFail: true
+  rollback:
+    timeout: 10m
+    recreate: true
+    cleanupOnFail: true
+  values:
+    clusterName: hetzner-k8s
+    proxyListenerMode: multiplex
+    service:
+      type: ClusterIP
+    ingress:
+      enabled: true
+      spec:
+        ingressClassName: istio
+        hosts:
+        - host: teleport.infra.behn.dev
+          paths:
+            - path: "/"
+              pathType: Prefix
+        tls:
+        - secretName: behndev-global
+          hosts:
+            - teleport.infra.behn.dev
+      
