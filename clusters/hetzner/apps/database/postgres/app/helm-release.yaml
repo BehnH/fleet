@@ -4,8 +4,6 @@ kind: HelmRelease
 metadata:
   name: postgresql
   namespace: database
-  annotations:
-    tailscale.com/expose: "true"
 spec:
   interval: 6h0m
   chart:
@@ -33,3 +31,8 @@ spec:
     - kind: Secret
       name: postgres-config
       valuesKey: values.yaml
+  values:
+    primary:
+      service:
+        annotations:
+          tailscale.com/expose: "true"
