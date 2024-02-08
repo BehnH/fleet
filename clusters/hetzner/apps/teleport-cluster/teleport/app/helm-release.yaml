@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       # renovate: registryUrl=https://charts.releases.teleport.dev
-      chart: teleport
+      chart: teleport-cluster
       version: 15.0.1
       sourceRef:
         kind: HelmRepository
