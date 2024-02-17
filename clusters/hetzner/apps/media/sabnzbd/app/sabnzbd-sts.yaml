@@ -23,9 +23,9 @@ spec:
           image: ghcr.io/linuxserver/sabnzbd:4.2.2
           resources:
             requests:
-              memory: "500Mi"
+              memory: "1Gi"
             limits:
-              memory: "750Mi"
+              memory: "1500Mi"
           ports:
             - containerPort: 8080
               name: http
