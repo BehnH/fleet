@@ -6,7 +6,6 @@ resources:
   - ./media-temp-pv.yaml
   - ./namespace.yaml
   - ./tailscale-proxy-access.yaml
-  - ./threadfin/kustomization.yaml
   - ./radarr/kustomization.yaml
   - ./sabnzbd/kustomization.yaml
   - ./sonarr/kustomization.yaml
