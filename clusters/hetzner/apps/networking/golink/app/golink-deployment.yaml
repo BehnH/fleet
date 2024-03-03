@@ -27,8 +27,6 @@ spec:
             - "-sqlitedb"
             - "/home/nonroot/golink.db"
             - "-verbose"
-            - "-control-url"
-            - "https://vpn.behn.dev"
           envFrom:
             - secretRef:
                 name: golink-secret
