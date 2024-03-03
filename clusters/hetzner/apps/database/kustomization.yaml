@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - ./postgres/kustomization.yaml
   - ./redis/kustomization.yaml
+  - ./cnpg/kustomization.yaml
   - namespace.yaml
