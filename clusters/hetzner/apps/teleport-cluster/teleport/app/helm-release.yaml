@@ -42,8 +42,3 @@ spec:
           paths:
             - path: "/"
               pathType: Prefix
-        tls:
-        - secretName: behndev-global
-          hosts:
-            - teleport.infra.behn.dev
-      
