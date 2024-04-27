@@ -52,15 +52,6 @@ resource "cloudflare_record" "tfer--CNAME_behn-002E-cc_6bc72a365d3017cf6b1de7f48
   zone_id = cloudflare_zone.zone_behn-cc.id
 }
 
-resource "cloudflare_record" "tfer--CNAME_behn-002E-cc_9ff6e9048b782b9dd127df4518b67cca" {
-  name    = "behn.cc"
-  proxied = "true"
-  ttl     = "1"
-  type    = "CNAME"
-  value   = "portfolio-b8w.pages.dev"
-  zone_id = cloudflare_zone.zone_behn-cc.id
-}
-
 resource "cloudflare_record" "tfer--CNAME_behn-002E-cc_cef7c0617a1446a8bd600c140ae14550" {
   name    = "rzps7fz67k4vwv3mqjnantq4jb3jbdhw._domainkey.infra.behn.cc"
   proxied = "false"
