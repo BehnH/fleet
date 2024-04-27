@@ -9,15 +9,15 @@ data:
     apiVersion: "descheduler/v1alpha2"
     kind: "DeschedulerPolicy"
     profiles:
-      - name: ProfileName
-        pluginConfig:
+    - name: ProfileName
+      pluginConfig:
         - name: "LowNodeUtilization"
           args:
             thresholds:
               "memory": 40
             targetThresholds:
-              "memory": 70
-        plugins:
-          balance:
-            enabled:
-              - "LowNodeUtilization"
+              "memory": 80
+      plugins:
+        balance:
+          enabled:
+            - "LowNodeUtilization"
