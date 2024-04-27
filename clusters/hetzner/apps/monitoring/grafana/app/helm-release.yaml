@@ -47,6 +47,7 @@ spec:
       GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://id.behn.dev/application/o/authorize/
       GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://id.behn.dev/application/o/token/
       GF_AUTH_GENERIC_OAUTH_API_URL: https://id.behn.dev/application/o/userinfo/
+      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'"
       GF_AUTH_SIGNOUT_REDIRECT_URL: https://id.behn.dev/application/o/grafana/end-session/
       GF_LOG_CONSOLE_FORMAT: "json"
       GF_FEATURE_TOGGLES_ENABLE: "flameGraph"
