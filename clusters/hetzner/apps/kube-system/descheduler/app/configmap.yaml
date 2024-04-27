@@ -14,9 +14,9 @@ data:
         - name: "LowNodeUtilization"
           args:
             thresholds:
-              "memory": 20
+              "memory": 40
             targetThresholds:
-              "memory": 60
+              "memory": 70
         plugins:
           balance:
             enabled:
