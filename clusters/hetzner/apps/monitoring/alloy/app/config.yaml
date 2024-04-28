@@ -31,6 +31,7 @@ data:
     discovery.kubernetes "felix_service" {
       role = "service"
       selectors {
+        role = "service"
         label = "__meta_kubernetes_service_name=felix-metrics-svc"
       }
       namespaces {
@@ -40,7 +41,8 @@ data:
     discovery.kubernetes "typha_metrics" {
       role = "service"
       selectors {
-        name = "__meta_kubernetes_service_name=typha-metrics-svc"
+        role = "service"
+        label = "__meta_kubernetes_service_name=typha-metrics-svc"
       }
       namespaces {
         names = ["calico-system"]
