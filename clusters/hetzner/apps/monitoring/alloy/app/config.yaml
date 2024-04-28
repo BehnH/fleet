@@ -33,6 +33,6 @@ data:
       forward_to = [prometheus.remote_write.mimir.receiver]
     }
     loki.source.kubernetes "k8s_pods" {
-      targets = discovery.kubernetes.k8s_pods.targets
+      targets = discovery.kubernetes.k8s_no_kube_system.targets
       forward_to = [loki.write.in_cluster.receiver]
     }
