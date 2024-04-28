@@ -14214,7 +14214,7 @@ spec:
               fieldPath: metadata.namespace
         - name: MONITORING_QUERIES_CONFIGMAP
           value: cnpg-default-monitoring
-        image: ghcr.io/cloudnative-pg/cloudnative-pg:1.22.2
+        image: ghcr.io/cloudnative-pg/cloudnative-pg:1.23.0
         livenessProbe:
           httpGet:
             path: /readyz
