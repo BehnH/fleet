@@ -46,7 +46,7 @@ spec:
       enabled: false
 
     kubelet:
-      enabled: true
+      enabled: false
       serviceMonitor:
         metricRelabelings:
           # Remove duplicate metrics
@@ -95,12 +95,6 @@ spec:
 
     grafana:
       enabled: false
-      forceDeployDashboards: true
-      sidecar:
-        dashboards:
-          multicluster:
-            etcd:
-              enabled: true
 
     # Prometheus Operator values
     prometheusOperator:
