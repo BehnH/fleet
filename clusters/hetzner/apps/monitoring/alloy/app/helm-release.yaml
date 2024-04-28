@@ -5,6 +5,7 @@ metadata:
   namespace: monitoring
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
+    sidecar.istio.io/inject: "false"
 spec:
   timeout: 30m
   interval: 6h

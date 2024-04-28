@@ -25,7 +25,7 @@ data:
     discovery.kubernetes "k8s_no_kube_system" {
       role = "pod"
       namespaces = {
-        names = [ "analytics", "database", "media", "monitoring", "networking", "security", "storage", "tailscale", "utilities", "flux-system", "istio-system" ]
+        names = ["analytics","database","media","monitoring","networking","security","storage","tailscale","utilities","flux-system","istio-system"]
       }
     }
     prometheus.scrape "k8s_pods" {
