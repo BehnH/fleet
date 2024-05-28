@@ -48,6 +48,12 @@ spec:
       redis:
         host: redis-master.database.svc.cluster.local
     server:
+      resources:
+        server:
+          requests:
+            cpu: 200m
+          limits:
+            cpu: "2"
       ingress:
         enabled: true
         ingressClassName: istio
@@ -70,9 +76,3 @@ spec:
     prometheus:
       serviceMonitor:
         create: true
-    resources:
-      server:
-        requests:
-          cpu: 200m
-        limits:
-          cpu: "2"
