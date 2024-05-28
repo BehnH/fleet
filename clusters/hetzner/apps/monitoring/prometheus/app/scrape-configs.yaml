@@ -50,14 +50,6 @@ spec:
               replacement: $1
               action: keep
 
-          - job_name: "sonarr-exporter"
-            static_configs:
-              - targets: ["sonarr-exporter.media.svc.cluster.local:9707"]
-
-          - job_name: "radarr-exporter"
-            static_configs:
-              - targets: ["radarr-exporter.media.svc.cluster.local:9707"]
-
   dataFrom:
     - extract:
         key: kv/services/prometheus-scraping

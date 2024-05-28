@@ -65,6 +65,24 @@ data:
       targets = discovery.kubernetes.k8s_pods.targets
       forward_to = [prometheus.remote_write.mimir.receiver]
     }
+    prometheus.scrape "radarr" {
+      targets = "radarr-exporter.media.svc.cluster.local:9707"
+      scrape_interval = "60s"
+    
+      forward_to = [prometheus.remote_write.mimir.receiver]
+    }
+    prometheus.scrape "sonarr" {
+      targets = "sonarr-exporter.media.svc.cluster.local:9707"
+      scrape_interval = "60s"
+    
+      forward_to = [prometheus.remote_write.mimir.receiver]
+    }
+    prometheus.scrape "sabnzbd" {
+      targets = "sabnzbd-exporter.media.svc.cluster.local:9707"
+      scrape_interval = "60s"
+    
+      forward_to = [prometheus.remote_write.mimir.receiver]
+    }
       
     loki.source.kubernetes "k8s_pods" {
       targets = discovery.kubernetes.k8s_no_kube_system.targets
