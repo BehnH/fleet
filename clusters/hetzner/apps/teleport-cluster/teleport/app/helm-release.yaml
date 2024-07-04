@@ -16,6 +16,8 @@ spec:
         name: teleport-charts
         namespace: flux-system
       interval: 5m
+  driftDetection:
+    mode: warn
   install:
     remediation:
       retries: 5
