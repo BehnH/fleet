@@ -37,8 +37,3 @@ spec:
       enabled: true
       spec:
         ingressClassName: istio
-        hosts:
-        - host: teleport.infra.behn.dev
-          paths:
-            - path: "/"
-              pathType: Prefix
