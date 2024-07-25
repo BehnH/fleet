@@ -21,7 +21,7 @@ terraform {
 
     hcloud = {
       source  = "hetznercloud/hcloud"
-      version = "1.46.1"
+      version = "1.48.0"
     }
 
     vault = {
