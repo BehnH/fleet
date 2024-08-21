@@ -4,7 +4,7 @@ resource "cloudflare_record" "tfer--MX_forgetfully-002E-dev_0a3e6f136c3884fb9335
   proxied  = "false"
   ttl      = "1"
   type     = "MX"
-  value    = "route2.mx.cloudflare.net"
+  content  = "route2.mx.cloudflare.net"
   zone_id  = cloudflare_zone.zone_forgetfully-dev.id
 }
 
@@ -14,7 +14,7 @@ resource "cloudflare_record" "tfer--MX_forgetfully-002E-dev_3d6e4e9efc3513fa4d67
   proxied  = "false"
   ttl      = "1"
   type     = "MX"
-  value    = "route1.mx.cloudflare.net"
+  content  = "route1.mx.cloudflare.net"
   zone_id  = cloudflare_zone.zone_forgetfully-dev.id
 }
 
@@ -24,7 +24,7 @@ resource "cloudflare_record" "tfer--MX_forgetfully-002E-dev_d054caa6e7bafcd3bca5
   proxied  = "false"
   ttl      = "1"
   type     = "MX"
-  value    = "route3.mx.cloudflare.net"
+  content  = "route3.mx.cloudflare.net"
   zone_id  = cloudflare_zone.zone_forgetfully-dev.id
 }
 
@@ -34,7 +34,7 @@ resource "cloudflare_record" "tfer--MX_trapped-in-002E-space_1dcea786bf7605bbb24
   proxied  = "false"
   ttl      = "1"
   type     = "MX"
-  value    = "route1.mx.cloudflare.net"
+  content  = "route1.mx.cloudflare.net"
   zone_id  = cloudflare_zone.zone_trapped-in-space.id
 }
 
@@ -44,7 +44,7 @@ resource "cloudflare_record" "tfer--MX_trapped-in-002E-space_9787c3ef9229e9782be
   proxied  = "false"
   ttl      = "1"
   type     = "MX"
-  value    = "route3.mx.cloudflare.net"
+  content  = "route3.mx.cloudflare.net"
   zone_id  = cloudflare_zone.zone_trapped-in-space.id
 }
 
@@ -54,7 +54,7 @@ resource "cloudflare_record" "tfer--MX_trapped-in-002E-space_b010caafedb49aaea41
   proxied  = "false"
   ttl      = "1"
   type     = "MX"
-  value    = "route2.mx.cloudflare.net"
+  content  = "route2.mx.cloudflare.net"
   zone_id  = cloudflare_zone.zone_trapped-in-space.id
 }
 
@@ -63,7 +63,7 @@ resource "cloudflare_record" "tfer--TXT_forgetfully-002E-dev_11667b03463fa8adfc2
   proxied = "false"
   ttl     = "1"
   type    = "TXT"
-  value   = "v=spf1 include:_spf.mx.cloudflare.net ~all"
+  content = "v=spf1 include:_spf.mx.cloudflare.net ~all"
   zone_id = cloudflare_zone.zone_forgetfully-dev.id
 }
 
@@ -72,7 +72,7 @@ resource "cloudflare_record" "tfer--TXT_forgetfully-002E-dev_407be9625c00ce00712
   proxied = "false"
   ttl     = "1"
   type    = "TXT"
-  value   = "d0d39fc434412812e260a200eb9a57"
+  content = "d0d39fc434412812e260a200eb9a57"
   zone_id = cloudflare_zone.zone_forgetfully-dev.id
 }
 
@@ -81,7 +81,7 @@ resource "cloudflare_record" "tfer--TXT_forgetfully-002E-dev_62032faea2c034dbbd5
   proxied = "false"
   ttl     = "1"
   type    = "TXT"
-  value   = "keybase-site-verification=IFcbYMGDg1DhN8m4RCems43Ex6X-DIMsR-aKqSsP61M"
+  content = "keybase-site-verification=IFcbYMGDg1DhN8m4RCems43Ex6X-DIMsR-aKqSsP61M"
   zone_id = cloudflare_zone.zone_forgetfully-dev.id
 }
 
@@ -90,7 +90,7 @@ resource "cloudflare_record" "tfer--TXT_trapped-in-002E-space_03d355621cc530ccbb
   proxied = "false"
   ttl     = "1"
   type    = "TXT"
-  value   = "keybase-site-verification=HvoVniUdU9QMaL-n4Euu3lYLIkLOyv6J1tJm8sixHo8"
+  content = "keybase-site-verification=HvoVniUdU9QMaL-n4Euu3lYLIkLOyv6J1tJm8sixHo8"
   zone_id = cloudflare_zone.zone_trapped-in-space.id
 }
 
@@ -99,6 +99,6 @@ resource "cloudflare_record" "tfer--TXT_trapped-in-002E-space_0f72ba2df2496a5367
   proxied = "false"
   ttl     = "1"
   type    = "TXT"
-  value   = "v=spf1 include:_spf.mx.cloudflare.net ~all"
+  content = "v=spf1 include:_spf.mx.cloudflare.net ~all"
   zone_id = cloudflare_zone.zone_trapped-in-space.id
 }

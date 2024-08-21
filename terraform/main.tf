@@ -41,7 +41,7 @@ data "vault_generic_secret" "cloudflare" {
 
 data "vault_kv_secret_v2" "hcloud" {
   mount = "kv"
-  name = "external/hetzner"
+  name  = "external/hetzner"
 }
 
 provider "authentik" {
@@ -61,7 +61,7 @@ variable "vault_role_id" {}
 variable "vault_secret_id" {}
 
 provider "vault" {
-  address = "https://vault.svc.behn.dev/"
+  address          = "https://vault.svc.behn.dev/"
   skip_child_token = true
 
   auth_login {
