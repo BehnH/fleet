@@ -16,7 +16,7 @@ terraform {
 
     authentik = {
       source  = "goauthentik/authentik"
-      version = "2024.4.2"
+      version = "2024.6.1"
     }
 
     hcloud = {
