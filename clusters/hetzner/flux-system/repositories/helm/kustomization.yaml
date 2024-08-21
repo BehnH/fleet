@@ -17,4 +17,3 @@ resources:
   - prometheus-community-charts.yaml
   - someone-stole-my-name-charts.yaml
   - tailscale-charts.yaml
-  - teleport-charts.yaml
