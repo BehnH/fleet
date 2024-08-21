@@ -17,5 +17,8 @@ spec:
         namespace: flux-system
   values:
     generateBasicAuth: true
-    operator:
-      create: true
+    istio:
+      mtls: true
+    gateway:
+      directFunctions: true
+      probeFunctions: true
