@@ -169,6 +169,15 @@ resource "cloudflare_record" "A_behn-dev_listen" {
   zone_id = cloudflare_zone.zone_behn-dev.id
 }
 
+resource "cloudflare_record" "A_functions-behn-dev_dash" {
+  name    = "dash.functions.behn.dev"
+  proxied = false
+  ttl     = "1"
+  type    = "A"
+  content = local.hcloud_lb_addr
+  zone_id = cloudflare_zone.zone_behn-dev.id
+}
+
 resource "cloudflare_record" "CNAME_behn-dev_root" {
   name    = "behn.dev"
   proxied = "false"
