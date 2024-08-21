@@ -61,7 +61,6 @@ variable "vault_secret_id" {}
 
 provider "vault" {
   address = "https://vault.svc.behn.dev/"
-  skip_child_token = true
 
   auth_login {
     path = "auth/approle/login"
