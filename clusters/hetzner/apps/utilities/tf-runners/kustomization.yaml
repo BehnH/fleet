@@ -5,6 +5,7 @@ metadata:
   name: cluster-apps-utilities-tf-runners
   namespace: flux-system
 spec:
+  path: ./clusters/hetzner/apps/utilities/tf-runners/app
   interval: 5m
   prune: true
   sourceRef:
