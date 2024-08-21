@@ -9,7 +9,7 @@ spec:
     secretKeyRef:
       name: tfc-operator
       key: token
-  name: k8s-runner
+  name: hetzner-k8s
   agentTokens:
     - name: runner-token-1
   agentDeployment:
