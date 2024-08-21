@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-security-vault
+  name: cluster-apps-openfaas-openfaas
   namespace: flux-system
 spec:
   path: ./clusters/hetzner/apps/openfaas/openfaas/app
