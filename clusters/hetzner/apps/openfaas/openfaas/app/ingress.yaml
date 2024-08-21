@@ -1,0 +1,20 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: openfaas-api
+  namespace: istio-system
+spec:
+  gateways:
+    - cluster-gateway
+  hosts:
+    - dash.functions.behn.dev
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: gateway.openfaas.svc.cluster.local
+            port:
+              number: 8080
