@@ -39,8 +39,9 @@ data "vault_generic_secret" "cloudflare" {
   path = "kv/external/cloudflare"
 }
 
-data "vault_generic_secret" "hcloud" {
-  path = "kv/external/hetzner"
+data "vault_kv_secret_v2" "hcloud" {
+  mount = "kv"
+  name = "external/hetzner"
 }
 
 provider "authentik" {
@@ -53,7 +54,7 @@ provider "cloudflare" {
 }
 
 provider "hcloud" {
-  token = data.vault_generic_secret.hcloud.data["api_token"]
+  token = data.vault_kv_secret_v2.hcloud.data["api_token"]
 }
 
 variable "vault_role_id" {}
@@ -61,6 +62,7 @@ variable "vault_secret_id" {}
 
 provider "vault" {
   address = "https://vault.svc.behn.dev/"
+  skip_child_token = true
 
   auth_login {
     path = "auth/approle/login"
