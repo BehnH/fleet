@@ -14,14 +14,6 @@ resource "cloudflare_zone" "zone_behn-dev" {
   zone       = "behn.dev"
 }
 
-resource "cloudflare_zone" "zone_bento-bot-com" {
-  account_id = local.cf_account_id
-  paused     = "false"
-  plan       = "free"
-  type       = "full"
-  zone       = "bento-bot.com"
-}
-
 resource "cloudflare_zone" "zone_forgetfully-dev" {
   account_id = local.cf_account_id
   paused     = "false"
@@ -36,12 +28,4 @@ resource "cloudflare_zone" "zone_trapped-in-space" {
   plan       = "free"
   type       = "full"
   zone       = "trapped-in.space"
-}
-
-resource "cloudflare_zone" "zone_f1-boats" {
-  account_id = local.cf_account_id
-  paused     = "false"
-  plan       = "free"
-  type       = "full"
-  zone       = "f1.boats"
 }
