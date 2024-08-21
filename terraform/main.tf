@@ -56,8 +56,20 @@ provider "hcloud" {
   token = data.vault_generic_secret.hcloud.data["api_token"]
 }
 
+variable "vault_role_id" {}
+variable "vault_secret_id" {}
+
 provider "vault" {
   address = "https://vault.svc.behn.dev/"
+  skip_child_token = true
+
+  auth_login {
+    path = "auth/approle/login"
+    parameters = {
+      role_id   = var.vault_role_id
+      secret_id = var.vault_secret_id
+    }
+  }
 }
 
 module "authentik" {
