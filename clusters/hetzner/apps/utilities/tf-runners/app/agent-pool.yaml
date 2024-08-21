@@ -17,4 +17,4 @@ spec:
     spec:
       containers:
         - name: tfc-agent
-          image: 'hashicorp/tfc-agent:1.15.4'
+          image: 'ghcr.io/tofutf/tofutf/tofutf-agent:v0.9.1-107-g50fb617b'
