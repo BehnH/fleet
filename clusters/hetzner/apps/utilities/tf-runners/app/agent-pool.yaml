@@ -4,7 +4,7 @@ metadata:
   name: tfc-agent-pool
   namespace: utilities
 spec:
-  organization: kubernetes-operator
+  organization: behnh
   token:
     secretKeyRef:
       name: tfc-operator
