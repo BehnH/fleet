@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - ./languagetool/kustomization.yaml
   - ./spotify-dashboard/kustomization.yaml
+  - ./tf-runners/kustomization.yaml
   - namespace.yaml
