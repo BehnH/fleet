@@ -6,3 +6,11 @@ metadata:
   labels:
     secrets-injection: enabled
     istio-injection: enabled
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: openfaas-fn
+  labels:
+    secrets-injection: enabled
+    istio-injection: enabled
