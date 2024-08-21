@@ -31,8 +31,6 @@ terraform {
   }
 }
 
-variable "hashicorp_vault_token" {}
-
 data "vault_generic_secret" "authentik" {
   path = "kv/external/authentik"
 }
@@ -60,7 +58,6 @@ provider "hcloud" {
 
 provider "vault" {
   address = "https://vault.svc.behn.dev/"
-  token   = var.hashicorp_vault_token
 }
 
 module "authentik" {
