@@ -73,6 +73,8 @@ spec:
               - id.hetzner.k8s.behn.dev
     redis:
       enabled: false
-    prometheus:
+    metrics:
+      enabled: true
       serviceMonitor:
-        create: true
+        enabled: true
+        
