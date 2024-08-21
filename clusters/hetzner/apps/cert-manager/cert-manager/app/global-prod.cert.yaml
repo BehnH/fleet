@@ -16,3 +16,4 @@ spec:
     - '*.svc.behn.dev'
     - '*.hetzner.k8s.behn.dev'
     - '*.bsxy.app'
+    - '*.functions.behn.dev'
