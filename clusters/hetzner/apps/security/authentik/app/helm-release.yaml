@@ -58,14 +58,8 @@ spec:
         enabled: true
         ingressClassName: istio
         hosts:
-          - host: id.behn.dev
-            paths:
-              - path: "/"
-                pathType: Prefix
-          - host: id.hetzner.k8s.behn.dev
-            paths:
-              - path: "/"
-                pathType: Prefix
+          - id.behn.dev
+          - id.hetzner.k8s.behn.dev
         tls:
           - secretName: behndev-global
             hosts:
