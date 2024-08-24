@@ -25,7 +25,7 @@ data:
     discovery.kubernetes "k8s_no_kube_system" {
       role = "pod"
       namespaces {
-        names = ["analytics","database","media","monitoring","networking","security","storage","tailscale","utilities","flux-system","istio-system"]
+        names = ["analytics","database","monitoring","networking","security","storage","tailscale","utilities","flux-system","istio-system"]
       }
     }
     discovery.kubernetes "felix_service" {
@@ -63,24 +63,6 @@ data:
     }
     prometheus.scrape "k8s_pods" {
       targets = discovery.kubernetes.k8s_pods.targets
-      forward_to = [prometheus.remote_write.mimir.receiver]
-    }
-    prometheus.scrape "radarr" {
-      targets = "radarr-exporter.media.svc.cluster.local:9707"
-      scrape_interval = "60s"
-    
-      forward_to = [prometheus.remote_write.mimir.receiver]
-    }
-    prometheus.scrape "sonarr" {
-      targets = "sonarr-exporter.media.svc.cluster.local:9707"
-      scrape_interval = "60s"
-    
-      forward_to = [prometheus.remote_write.mimir.receiver]
-    }
-    prometheus.scrape "sabnzbd" {
-      targets = "sabnzbd-exporter.media.svc.cluster.local:9707"
-      scrape_interval = "60s"
-    
       forward_to = [prometheus.remote_write.mimir.receiver]
     }
       
