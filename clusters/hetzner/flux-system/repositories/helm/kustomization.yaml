@@ -14,6 +14,7 @@ resources:
   - jetstack-charts.yaml
   - kiali-charts.yaml
   - metallb-charts.yaml
+  - meilisearch-charts.yaml
   - openfaas-charts.yaml
   - prometheus-community-charts.yaml
   - someone-stole-my-name-charts.yaml
